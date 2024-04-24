@@ -1,16 +1,8 @@
 const fs = require('uxp').storage.localFileSystem;
 const app = require('photoshop').app;
 const retouchNotesFolderName = 'Retouch Notes';
-// const { batchPlay } = require("photoshop").action;
-
 let oldActiveDocumentName;
 let retouchNotesFound;
-
-
-
-
-// Events recognized as notifiers are not re-playable in most of the cases. There is high chance that generated code won't work.
-
 const {executeAsModal} = require("photoshop").core;
 const {batchPlay} = require("photoshop").action;
 
@@ -93,19 +85,19 @@ async function findRetouchNotesFolder(currentDocumentObject, folderName) {
     if (!docuPath) {
         return null; // Handle the case where the document path is not valid
     }
-    // console.log(docuPath)
+ 
 
     try {
         const folders = await fs.getEntryWithUrl(docuPath);
-        // console.log(folders)
+
     
         const contents = await folders.getEntries();
-        // console.log(contents)
+
 
         let found = false;
         for (const item of contents) {
 
-            // console.log(item, item.name)
+
             if (item.name === folderName) {
                 found = true;
                 return item;
@@ -130,10 +122,10 @@ async function folderContents(arr) {
     for (const arrayElement of arr) {
 
         // KILL THE LOOP
+        // RetouchNoteFound is updated by the matchNames function, the loop searches unnecessarily without this base case
         if (retouchNotesFound) {
             return;
         }
-
 
         // Check for matching name
         await matchNames(arrayElement);
@@ -150,17 +142,12 @@ async function matchNames(documentObject) {
         let updatingCleanedName = cleanedName.includes('M0') ? cleanedName.replace('M0', '') : cleanedName;
         cleanedName = updatingCleanedName;
         const activeName = app.activeDocument.name;
-        // oldActiveDocumentName = app.activeDocument
 
         const activeDocumentName = activeName.replace(regex, "");
 
         if (cleanedName === activeDocumentName) {
 
-            let test = await checkLayersForNotes();
-
-            // If it returns true it means retouch notes exist 
-            // If the test var returns false it means the retouch notes do not exists 
-            
+            let test = await checkLayersForNotes();            
             // this test var is true then it's sett o false menaing it won't open a image
             if(!test){
                 // await require('photoshop').core.executeAsModal(async (executionContext, descriptor) => {
@@ -182,14 +169,13 @@ async function matchNames(documentObject) {
 async function openImage(pathString) {
     try {
         const getObject = await fs.getEntryWithUrl(pathString);
-        // await require('photoshop').core.executeAsModal(async (executionContext, descriptor) => {
+
             try {
                 
                 
                 // Open Retouch Note
                 await app.open(getObject);
-                // Switch back to old active document 
-                // app.activeDocument = oldActiveDocumentName
+
 
                 await placeImage()
                 // await app.activeDocument.closeWithoutSaving()
@@ -198,22 +184,17 @@ async function openImage(pathString) {
             } catch (e) {
                 console.error(e);
             }
-        // }, { "commandName": "Open Image" });
+
     } catch (e) {
         console.error(e);
     }
 }
 
 async function checkLayersForNotes() {
-    // await require('photoshop').core.executeAsModal(async (executionContext, descriptor) => {
-        console.log("checkLayersForNotes")
     try {
-        // const activeDocument = app.activeDocument; // Get the active document
-        // const layers = activeDocument.layers; // Get the layers of the active document
-
-        let activeDocLayers = Array.from(oldActiveDocumentName.layers)
-        // console.log(activeDocLayers);
         
+        let activeDocLayers = Array.from(oldActiveDocumentName.layers)
+
         // Now you can iterate over the layers if needed
         for (const element of activeDocLayers) {
             // Your code to process each layer goes here
@@ -221,8 +202,7 @@ async function checkLayersForNotes() {
             console.log(element)
 
             if(element.name == "Retouch Notes"){
-                // await app.activeDocument.closeWithoutSaving()
-                // return true
+
                 throw new Error('Retouch Notes already exist test');
                 
             }
@@ -235,7 +215,7 @@ async function checkLayersForNotes() {
         await app.activeDocument.closeWithoutSaving()
         return true
     }
-// }, { "commandName": "FirstModalContext" });
+
 }
 
 
@@ -245,85 +225,32 @@ async function checkLayersForNotes() {
 async function placeImage(){
 
 
-// Received Error without executing as modal, see error:
-// Error: Event: select may modify the state of Photoshop. Such events are only allowed from inside a modal scope
-    // await require('photoshop').core.executeAsModal(async (executionContext, descriptor) => {
-        try {    
 
 
-            app.activeDocument.resizeImage(2300, 2608);
-            const constants = require('photoshop').constants;
-            const layers = app.activeDocument.layers
-            const topLayer = layers[0]
-            let noteLayer = await topLayer.duplicate()
-            noteLayer.name = "Retouch Note"
-            let newGroup = await app.activeDocument.createLayerGroup({ name: "Retouch Notes"});
-            newGroup.visible = false
-            await noteLayer.move(newGroup, constants.ElementPlacement.PLACEINSIDE);
-            await newGroup.duplicate(oldActiveDocumentName, constants.ElementPlacement.PLACEINSIDE);
-            await app.activeDocument.closeWithoutSaving()
-            // let retouchNotesGroup = Array.from(oldActiveDocumentName.layer).find(ba => console.log("tets"))
-
-            // let retouchNotesGroup = Array.from(oldActiveDocumentName.layers)
-
-            // for(const lay of retouchNotesGroup){
-            //     console.log(lay)
-            // }
-
-            
-
-            // // ba.name === "Retouch Notes" && layer.isGroup
-            // console.log(retouchNotesGroup, "retouch group")
-            // if(retouchNotesGroup){
-
-                
-            //     // await retouchNotesGroup.addChild(retouchNotesGroup, { position: 'front' })
-            // }
-
-            // // const selectLayers = oldActiveDocumentName.activeLayers;
-            // // const SelectedLayer = selectLayers[0];
-            // // await SelectedLayer.moveAbove(oldActiveDocumentName.layerTree[0]);
+try {           
 
 
-            // require("photoshop").action.batchPlay(
-            //     [{
-            //       "_obj": "select",
-            //       "_target": [{
-            //         "_ref": "layer",
-            //         "_id": require('photoshop').app.activeDocument.layers[0]._id
-            //       }],
-            //     }], {});
-            // await batchPlay([
-            //     {
-            //         "_obj": "move",
-            //         "_target": [
-            //             {
-            //                 "_ref": "group",
-            //                 "_name": "Retouch Notes"
-            //             }
-            //         ],
-            //         "to": {
-            //             "_ref": "layer",
-            //             "_index": 0
-            //         },
-            //         "adjustment": true
-            //     }
-            // ], {});
+    app.activeDocument.resizeImage(2300, 2608);
+    const constants = require('photoshop').constants;
+    const layers = app.activeDocument.layers
+    const topLayer = layers[0]
+    let noteLayer = await topLayer.duplicate()
+    noteLayer.name = "Retouch Note"
+    let newGroup = await app.activeDocument.createLayerGroup({ name: "Retouch Notes"});
+    newGroup.visible = false
+    await noteLayer.move(newGroup, constants.ElementPlacement.PLACEINSIDE);
+    await newGroup.duplicate(oldActiveDocumentName, constants.ElementPlacement.PLACEINSIDE);
+    // Close the retouch note jpeg
+    await app.activeDocument.closeWithoutSaving()
+    // Move group to top of layers
+    await actionCommands()
+    // Save the active document
+    await app.activeDocument.save()
+    // await app.activeDocument.close()
+} catch (e) {
+    console.error(e);
+}
 
-            // await runModalFunction();
-
-
-            await actionCommands()
-            await app.activeDocument.save()
-            await app.activeDocument.close()
-       
-
-
-
-        } catch (e) {
-            console.error(e);
-        }
-    // }, { "commandName": "SecondModalContext" });
 }
 
 function appendText(msg) {
@@ -332,8 +259,4 @@ function appendText(msg) {
 }
 
 
-
-
-
-// processRetouchNotes();
 
