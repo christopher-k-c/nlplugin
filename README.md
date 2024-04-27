@@ -17,7 +17,8 @@ An Adobe Photoshop Plugin for the Newlook retouch team. An all-encompassing auto
 ### Packaging and installing a plugin 
 
 1. To save a plugin, open Adobes UXP Developer tools, locate the specific plugin in the menu and click on its ellipsis:
-![Save/Package a plugin](/documention/package.png)
+/
+![Save/Package a plugin](/assets/documention/package.png =x70)
 2. A folder dialog box will appear, select a location for you packaged plugin to be saved
 3. The plugin will now be available for photoshop installation 
 
