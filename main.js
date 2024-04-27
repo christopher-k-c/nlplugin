@@ -5,7 +5,7 @@ let oldActiveDocumentName;
 let retouchNotesFound;
 const {executeAsModal} = require("photoshop").core;
 const {batchPlay} = require("photoshop").action;
-
+// Batch Play Command
 function actionCommands() {
 
     const result = batchPlay(
