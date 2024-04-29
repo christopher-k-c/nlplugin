@@ -5,6 +5,26 @@ An Adobe Photoshop Plugin for the Newlook retouch team. An all-encompassing auto
 
 ## To-do
 
+### Scripts/Solutions
+
+#### Key Functionality 
+- [ ] Build Retouch Layer Structure Script
+- [x] Retouch Notes Script
+- [ ] Swatches Script 
+- [ ] Colour Correction Script
+- [ ] Frequency Separation Script
+- [ ] Dust and scratches Script
+- [ ] Multipack Template Script
+
+#### Uploading
+- [ ] Upload Colour Correction file
+- [ ] Upload Final Images 
+
+#### Nice-to-haves
+- [ ] Moire Reduction (Access camera raw)
+- [ ] Acccess to guides
+- [ ] Notification system
+
 ### Modular programming to-do
 
 - [ ] main.js to handle button eventlisteners 
@@ -26,6 +46,7 @@ Important to paste the following into the manifest.json otherwise read/writing t
 ```
 
 Developer mode needs to be enabled inside your Photoshop Application, Photoshop > Settings > Plugins:
+
 </br>
 
 ![Developer Mode Enabled](/assets/documention/dev.png)
@@ -33,9 +54,13 @@ Developer mode needs to be enabled inside your Photoshop Application, Photoshop 
 ### Packaging and installing a plugin 
 
 1. To save a plugin, open Adobes UXP Developer tools, locate the specific plugin in the menu and click on its ellipsis:
+
 </br>
 
 ![Save/Package a plugin](/assets/documention/package.png)
+
+</br>
+
 2. A folder dialog box will appear, select a location for you packaged plugin to be saved
 3. The plugin will now be available for photoshop installation 
 
