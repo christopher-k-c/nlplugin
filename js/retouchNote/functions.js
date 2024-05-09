@@ -76,8 +76,7 @@ async function processRetouchNotes() {
 }, { "commandName": "General Modal" });
 }
 
-document.getElementById("btnPopulate").addEventListener("click", processRetouchNotes);
-
+// COMMON FUNCTION 1
 // Find the retouch notes
 async function findRetouchNotesFolder(currentDocumentObject, folderName) {
     // Remove name from path 
@@ -166,6 +165,7 @@ async function matchNames(documentObject) {
     }
 }
 
+// COMMON FUNCTION 1
 async function openImage(pathString) {
     try {
         const getObject = await fs.getEntryWithUrl(pathString);
@@ -260,3 +260,15 @@ function appendText(msg) {
 
 
 
+
+
+function runFunction2(){
+    console.log("I am Test Function 2")
+}
+
+
+function runFunction3(){
+    console.log("I am Test Function 3")
+}
+
+module.exports = { processRetouchNotes, runFunction2, runFunction3 };
