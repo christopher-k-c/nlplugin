@@ -1,7 +1,6 @@
 # Introduction
 
-An Adobe Photoshop Plugin for the Newlook retouch team. An all-encompassing automation solution for the retouch team by centralising all actions within a unified and organised plugin.
-
+An Adobe Photoshop Plugin for the Newlook retouch team. An all-encompassing automation solution that aims to centralise all actions, scripts and plugins.
 
 ## To-do
 
