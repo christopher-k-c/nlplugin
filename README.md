@@ -4,10 +4,34 @@ An Adobe Photoshop Plugin for the Newlook retouch team. An all-encompassing auto
 
 ## To-do
 
+Core aims:
+
+* The plugin will offer multiple features, i.e. import retouch notes, build layer structure etc
+* Each feature will be accessible individually 
+* The plugin will offer a composite of features, here's an example of one:
+
+### Layer Structure Composite Function (Pseudocode):
+
+```
+If (active document exists do the following)
+ if (filename contains Z)
+	move file to doNotEdit folder and close active document
+ if (file is landscape)
+	run multi-pack template
+ else if (file is portrait) 
+	apply file layer structure and resize image
+
+if (layer structure applied)
+	if (retouch notes folder exists)
+		search for matching note and apply to active document
+	if (swatch folder exists)
+		search for matching note and apply to active document
+```
+
 ### Scripts/Solutions
 
-#### Key Functionality 
-- [ ] Build Retouch Layer Structure Script
+#### Key Features 
+- [ ] Layer Structure Composite Function
 - [x] Retouch Notes Script
 - [ ] Swatches Script 
 - [ ] Colour Correction Script
@@ -70,6 +94,11 @@ Developer mode needs to be enabled inside your Photoshop Application, Photoshop 
 * UXP Developer Tool
 * Visual Studio Code
 * Aim to convert to the react template and tailwindcss once I understand adobes plugin fundamentals/it runs smoothly with the quick-layers starter template 
+
+
+
+
+
 
 
 * Read more about creating and debugging plugins using the UDT application [here](https://developer.adobe.com/photoshop/uxp/2022/guides/devtool/udt-walkthrough/). 
