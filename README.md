@@ -13,19 +13,22 @@ Core aims:
 ### Layer Structure Composite Function (Pseudocode):
 
 ```
-If (active document exists do the following)
- if (filename contains Z)
-	move file to doNotEdit folder and close active document
- if (file is landscape)
-	run multi-pack template
- else if (file is portrait) 
-	apply file layer structure and resize image
-
-if (layer structure applied)
-	if (retouch notes folder exists)
-		search for matching note and apply to active document
-	if (swatch folder exists)
-		search for matching note and apply to active document
+Check if an active document exists:
+    If yes:
+        If filename contains 'Z':
+            Move file to 'doNotEdit' folder and close active document
+        Else:
+            If file is landscape:
+                Run multi-pack template
+            Else if file is portrait:
+                Apply file layer structure and resize image
+                
+        Check if layer structure is applied:
+            If yes:
+                If 'retouch notes' folder exists:
+                    Search for matching note and apply to active document
+                If 'swatch' folder exists:
+                    Search for matching note and apply to active document
 ```
 
 ### Scripts/Solutions
