@@ -1,15 +1,13 @@
-const { processRetouchNotes, runFunction2, runFunction3 } = require("/js/retouchNote/functions");
+const { processRetouchNotes, runFunction2, runFunction3 } = require("/js/retouchNote/noteFunctions");
+const { buildLayers } = require("/js/layerStructure/layerFunction");
 
 function onButtonClick(action) {
     switch (action) {
         case "retouchNotes": 
             processRetouchNotes();
             break;
-        case "function2":
-            runFunction2();
-            break;
-        case "function3":
-            runFunction3();
+        case "layerFunc":
+            buildLayers();
             break;
         default:
             console.error("Invalid action");
