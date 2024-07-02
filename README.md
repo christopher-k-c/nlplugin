@@ -34,9 +34,9 @@ Check if an active document exists:
 ### Scripts/Solutions
 
 #### Key Features 
-- [ ] Layer Structure Composite Function
+- [x] Layer Structure Composite Function
 - [x] Retouch Notes Script
-- [ ] Swatches Script 
+- [x] Swatches Script 
 - [ ] Colour Correction Script
 - [ ] Frequency Separation Script
 - [ ] Dust and scratches Script
@@ -53,9 +53,9 @@ Check if an active document exists:
 
 ### Modular programming to-do
 
-- [ ] main.js to handle button eventlisteners 
-- [ ] handler.js  to contain the handler function for the button event, using a switch case to target correct function on click event 
-- [ ] An organized folder structure containing specific and non-specific/Reusable blocks of code
+- [x] main.js to handle button eventlisteners 
+- [x] handler.js  to contain the handler function for the button event, using a switch case to target correct function on click event 
+- [x] An organized folder structure containing specific and non-specific/Reusable blocks of code
 
 
 ## Documentation
@@ -92,12 +92,12 @@ Developer mode needs to be enabled inside your Photoshop Application, Photoshop 
 
 ## Tech Stack
 
-* Adobe Photoshop & UXP API
-* Javascript, HTML & CSS
+* Adobe Photoshop API
+* Adobe UXP API
+* React, ES6 Javascript (occasionaly Common JS Syntax), HTML/CSS, Node
 * UXP Developer Tool
 * Visual Studio Code
-* Aim to convert to the react template and tailwindcss once I understand adobes plugin fundamentals/it runs smoothly with the quick-layers starter template 
-
+* Hope to implement tailwindcss 
 
 
 
