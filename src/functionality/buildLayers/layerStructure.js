@@ -11,6 +11,21 @@ async function buildLayers() {
         await backgroundLayer.delete();
         const originalLayer = await duplicatedLayer.duplicate();
         originalLayer.name = "ORIGINAL";
+        originalLayer.visible = false;
+        activeDoc.resizeImage(undefined, 2608, 300)
+        activeDoc.resizeCanvas(2300, undefined)
+
+
+
+
+
+        // console.log(originalLayer.visible)
+
+
+
+
+
+
     }, { "commandName": "Layer Structure Modal" });
 }
 
