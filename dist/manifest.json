@@ -1,6 +1,6 @@
 {
-	"id": "react-basic-components",
-	"name": "UXP React Basic Components",
+	"id": "new-look-react-plugin",
+	"name": "New Look Retouch Plugin",
 	"version": "1.0.0",
 	"main": "main.js",
 	"manifestVersion": 5,
@@ -28,7 +28,7 @@
 			"type": "panel",
 			"id": "basiccomponents",
 			"label": {
-				"default": "UXP React Basic Components"
+				"default": "New Look"
 			},
 			"minimumSize": {
 				"width": 100,

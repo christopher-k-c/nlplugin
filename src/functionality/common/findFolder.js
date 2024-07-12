@@ -7,7 +7,6 @@ import {app, core, action} from 'photoshop'
 async function findFolder(path, folderName){
 
     try {
-
         // access folder path
         const folders = await fs.getEntryWithUrl(path);
         // return array of path contents
