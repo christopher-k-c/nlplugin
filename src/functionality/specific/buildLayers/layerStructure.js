@@ -20,6 +20,16 @@ try{
     await backgroundLayer.delete();
     const originalLayer = await duplicatedLayer.duplicate();
     originalLayer.name = "ORIGINAL";
+    originalLayer.visible = false;
+    originalLayer.selected = false;
+    console.log("test")
+    let setAct = await app.activeDocument.layers[1]
+    console.log(setAct)
+    setAct.selected = true
+
+    // let actvLayer = await  app.activeDocument.activeLayers[setAct]
+    // console.log(actvLayer)
+    // actvLayer = setAct
 
 }catch(e){
 
