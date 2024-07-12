@@ -6,6 +6,9 @@ import findFolder from "../../common/findFolder"
 import findFile from "../../common/findFile"
 import openFile from "../../common/openFile";
 import placeImage from "../../common/placeImage";
+import setWorkingLayer from '../../common/setLayer';
+import checkLayers from '../../common/checkLayer';
+import buildLayers from '../buildLayers/layerStructure';
 
 
 async function swatchCheck(){
@@ -17,6 +20,15 @@ async function swatchCheck(){
 
         // Get document  
         const doc = app.activeDocument
+
+        // Check if layer structure has been applied before carrying on
+        let layerStatus = await checkLayers()
+        console.log(layerStatus, "layerstatus")
+        if(!layerStatus){
+            // If no layer structure, run buildLayers then carry on
+            await buildLayers()
+        }
+        
 
         // Remove filename from path string
         let docuPath = doc.path.replace(doc.title, "")
@@ -45,12 +57,17 @@ async function swatchCheck(){
         if(!openMatch){
             throw new Error('Unable to open file');
             // return;
-        }
+        }        
 
         let importImage = await placeImage(doc)
         if(!importImage){
             throw new Error('Error whilst copying file');
             // return;
+        }
+
+        let getWorkingLayer = await setWorkingLayer(doc)
+        if(!getWorkingLayer){
+            throw new Error('Error whilst selecting WORKING layer')
         }
 
     })
@@ -59,30 +76,3 @@ async function swatchCheck(){
 export default swatchCheck;
 
 
-/*
-
-To Do:
-
-
-implement throw new error / try/catch error propagation 
-
-swatchCheck requires control flow
-- is nest try/catch recommended or redundant?
-- Long term wire all errors to a notification system  
-
-findFile requires:
-- Clean up conditional/dynamism 
-- Handle multiple file types .jpg etc 
-
-findFolder requires:
-- Long term goal a recursive function, parameters that determine the output/action applied 
-
-openFile requires:
-- Control flow/clean up
-
-placeImage requires:
-- Dynamic re-write
-
-collector.js needs to be implemented 
-
-*/
