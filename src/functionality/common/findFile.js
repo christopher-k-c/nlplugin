@@ -5,27 +5,7 @@ async function findFile(arr, openFile){
 
     try {
 
-<<<<<<< HEAD
-        // console.log(arr, openFile, "hello world")
-
-        // Match file names 
-        // let match = 
-        
-        // arr.some(element => element.name.replace("_R.jpg", "") === openFile.name.replace(".tif", "") 
-        
-        // || 
-        
-        // element.name.replace("M0_R.jpg", "") === openFile.name.replace(".tif", ""));
-
-        // if(match){
-            
-        // }
-
-
-         const match = arr.find((element) => {
-=======
         const match = arr.find((element) => {
->>>>>>> origin/react-plugin-update-laptop
 
             if(element.name.replace("_R.jpg", "") === openFile.name.replace(".tif", "") 
                 || element.name.replace("M0_R.jpg", "") === openFile.name.replace(".tif", ""))
@@ -35,13 +15,6 @@ async function findFile(arr, openFile){
                 // console.log(element.nativePath)
             }
 
-<<<<<<< HEAD
-        })
-
-        
-
-        
-=======
             // This needs to be cleaned up, needs to handle multiple file types etc
 
 
@@ -57,7 +30,6 @@ async function findFile(arr, openFile){
 
         })
 
->>>>>>> origin/react-plugin-update-laptop
         return match // Return an object if theres a match 
 
 
