@@ -1,0 +1,51 @@
+/* .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+div:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.slider {
+  flex-grow: 1;
+}
+
+.slider-input {
+  width: 50px;
+  margin-left: 10px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end !important;
+}
+
+sp-button {
+  margin-left: 8px;
+}
+
+*/
+
+/* 
+sp-action-button {
+
+ flex-grow: 1; */
+
+
+ .button-container{
+  display: flex;
+  flex-wrap: wrap;
+/* Distributes items evenly */
+  
+  
+   /* flex-grow: 2; */
+ }
+
+ .button{
+  
+  flex-basis: calc(50% - 20px); /* Adjust for padding or margins */
+  margin: 10px; /* Adjust margin as needed */
+  box-sizing: border-box; /* Ensure padding and border are included in width */
+}
