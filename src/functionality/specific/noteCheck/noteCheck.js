@@ -1,8 +1,8 @@
-
-import findFolder from "../common/findFolder";
-import findFile from "../common/findFile"
-import {app, core, action} from 'photoshop'
-import openFile from "../common/openFile";
+import {app, core} from 'photoshop'
+import findFolder from "../../common/findFolder"
+import findFile from "../../common/findFile"
+import openFile from "../../common/openFile";
+import placeImage from "../../common/placeImage";
 
 
 
@@ -16,18 +16,22 @@ async function findNotes(){
 
         // Get Retouch Notes folder
         let returnArrOfNote = await findFolder(docuPath, folderName);
-        // console.log(returnArrOfNote)
 
         // Get Retouch Notes contents
         let contentsOfNote = await findFolder(returnArrOfNote.nativePath, returnArrOfNote.name)
-        // console.log(contentsOfNote)
+        console.log(contentsOfNote)
 
         // Look for match between active doc name and filenames in contentsOfNote arr
         let matchFile = await findFile(contentsOfNote, doc)
 
         let openMatch = await openFile(matchFile)
 
-        console.log(openMatch)
+        if(!openMatch){
+            return;
+        }
+
+        await placeImage(doc)
+
 
     }, { "commandName": "General Modal" });
 
