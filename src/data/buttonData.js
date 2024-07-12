@@ -5,6 +5,7 @@ import testThree from "../functionality/noteCheck/noteCheck.js"
 import testFour from "../functionality/swatchCheck/swatchCheck.js"
 
 
+
 const arr = [
   { id: "0", name: "Alert", func: testOne},
   { id: "1", name: "Start-up", func: testTwo},

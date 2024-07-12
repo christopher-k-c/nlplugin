@@ -28,7 +28,7 @@
 			"type": "panel",
 			"id": "basiccomponents",
 			"label": {
-				"default": "UXP React Basic Components"
+				"default": "New Look"
 			},
 			"minimumSize": {
 				"width": 100,
