@@ -6,12 +6,14 @@ async function findFile(arr, openFile){
     try {
         const match = arr.find((element) => {
 
-            let noteName = element.name
-            let openName = openFile.name
+            const { name: noteName } = element;
+            const { name: openName } = openFile;
 
-            // Remove all from underscore 
-            let slicedNoteName = noteName.slice(0, noteName.lastIndexOf('_'));
-            let slicedOpenName = openName.slice(0, openName.lastIndexOf('_'));
+            const sliceBeforeLastUnderscore = (str) => str.slice(0, str.lastIndexOf('_'));
+
+            const slicedNoteName = sliceBeforeLastUnderscore(noteName);
+            const slicedOpenName = sliceBeforeLastUnderscore(openName);
+
             // Remove from .
             let noteNameSlicedFromDot = openName.slice(0, openName.lastIndexOf('.'))
             // Remove from M0
