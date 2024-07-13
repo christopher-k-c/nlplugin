@@ -37,6 +37,7 @@ async function findNotes(){
 
         // Look for match between active doc name and filenames in contentsOfNote arr
         let matchFile = await findFile(contentsOfNote, doc)
+        console.log(matchFile)
 
         let openMatch = await openFile(matchFile)
         if(!openMatch){
