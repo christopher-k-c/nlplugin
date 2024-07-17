@@ -13,7 +13,7 @@ import buildLayers from '../buildLayers/layerStructure';
 
 async function swatchCheck(){
 
-    await core.executeAsModal(async (executionContext, descriptor) => {
+   let result = await core.executeAsModal(async (executionContext, descriptor) => {
 
         // Folder string
         const folderName = "SWATCHES";
@@ -23,7 +23,6 @@ async function swatchCheck(){
 
         // Check if layer structure has been applied before carrying on
         let layerStatus = await checkLayers()
-        console.log(layerStatus, "layerstatus")
         if(!layerStatus){
             // If no layer structure, run buildLayers then carry on
             await buildLayers()
@@ -36,41 +35,46 @@ async function swatchCheck(){
         // Get Swatch folder
         let returnArrOfSwatch = await findFolder(docuPath, folderName);
         if(!returnArrOfSwatch){
-            throw new Error('Swatch folder not found.');
-            // return;
+
+            return false
         }
 
         // Get Swatch Folder Contents as array
         let contentsOfSwatch = await findFolder(returnArrOfSwatch.nativePath, returnArrOfSwatch.name)
         if(!contentsOfSwatch){
-            throw new Error('Error searching for contents of Swatch folder.');
-            // return;
+  
+            return false
         }
 
         // Look for match between active doc name and filenames in contentsOfSwatch arr
         let matchFile = await findFile(contentsOfSwatch, doc)
         if(!matchFile){
-            throw new Error('Matching file not found.');
-            // return;
+
+            return false
         }
+   
         let openMatch = await openFile(matchFile)
         if(!openMatch){
-            throw new Error('Unable to open file');
-            // return;
+
+            
+            return false
         }        
 
         let importImage = await placeImage(doc)
         if(!importImage){
-            throw new Error('Error whilst copying file');
-            // return;
+
+            return false
         }
 
         let getWorkingLayer = await setWorkingLayer(doc)
         if(!getWorkingLayer){
-            throw new Error('Error whilst selecting WORKING layer')
+            return false
         }
 
+
+        return true
     })
+    return result
 }
 
 export default swatchCheck;

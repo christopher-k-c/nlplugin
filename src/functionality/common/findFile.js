@@ -6,25 +6,34 @@ async function findFile(arr, openFile){
     try {
         const match = arr.find((element) => {
 
-            const { name: noteName } = element;
-            const { name: openName } = openFile;
+            let noteName = element.name
+            let openName = openFile.name
+            // console.log("RAW Note Filename: ", noteName)
+            // console.log("RAW Open Filename: ", openName)
 
-            const sliceBeforeLastUnderscore = (str) => str.slice(0, str.lastIndexOf('_'));
 
-            const slicedNoteName = sliceBeforeLastUnderscore(noteName);
-            const slicedOpenName = sliceBeforeLastUnderscore(openName);
+            // Remove all from underscore 
+            let slicedNoteName = noteName.slice(0, noteName.lastIndexOf('_'));
+
+            let slicedOpenName = openName.slice(0, openName.lastIndexOf('.'));
 
             // Remove from .
             let noteNameSlicedFromDot = openName.slice(0, openName.lastIndexOf('.'))
             // Remove from M0
             let openNameSlicedFromM0 = noteName.slice(0, noteName.lastIndexOf('M0'))
 
+
+            // Types of match:
             if(noteName.includes("M0") && openNameSlicedFromM0 === noteNameSlicedFromDot){
                 return element.nativePath;
-            } else if (noteName.includes("_") && slicedNoteName === slicedOpenName){
+            }
+            if (noteName.includes("_") && slicedNoteName === slicedOpenName){
                 return element.nativePath;
             }
+
         })
+
+
 
         return match // Return an object if theres a match 
 
