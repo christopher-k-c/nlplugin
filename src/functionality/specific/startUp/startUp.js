@@ -4,22 +4,21 @@ import findNotes from '../noteCheck/noteCheck'
 import swatchCheck from '../swatchCheck/swatchCheck'
 
 async function startUp(){
+    
+
+    // If more layers than just background cancel operation
+    if(app.activeDocument.layers.length > 1){
+        return
+    }
 
     let createLayers = await buildLayers();
-    if(!createLayers){
-        throw new Error("Build Layers failed");
-    }
+
 
     let checkNotes = await findNotes();
-    if(!checkNotes){
-        throw new Error("Find Notes function failed");
-    }
+
 
     let checkSwatch = await swatchCheck();
-    if(!checkSwatch){
-        throw new Error("Swatch search function failed");
-    }
-    
+
 
 }
 

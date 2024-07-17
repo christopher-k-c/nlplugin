@@ -10,7 +10,7 @@ import checkLayers from '../../common/checkLayer';
 
 
 async function findNotes(){
-    await core.executeAsModal(async (executionContext, descriptor) => {
+    const result = await core.executeAsModal(async (executionContext, descriptor) => {
         
         const folderName = "Retouch Notes";
 
@@ -19,7 +19,6 @@ async function findNotes(){
 
         // Check if layer structure has been applied before carrying on
         let layerStatus = await checkLayers()
-        console.log(layerStatus, "layerstatus")
         if(!layerStatus){
             // If no layer structure, run buildLayers then carry on
             await buildLayers()
@@ -30,35 +29,42 @@ async function findNotes(){
 
         // Get Retouch Notes folder
         let returnArrOfNote = await findFolder(docuPath, folderName);
+        if(!returnArrOfNote){
+            return false
+        }
 
         // Get Retouch Notes contents
         let contentsOfNote = await findFolder(returnArrOfNote.nativePath, returnArrOfNote.name)
-        console.log(contentsOfNote)
+        if(!contentsOfNote){
+            return false
+        }
 
         // Look for match between active doc name and filenames in contentsOfNote arr
         let matchFile = await findFile(contentsOfNote, doc)
-        console.log(matchFile)
+        if(!matchFile){
+            return false
+        }
 
         let openMatch = await openFile(matchFile)
         if(!openMatch){
-            return;
+            return false
         }
 
         let importImage = await placeImage(doc)
         if(!importImage){
-            throw new Error('Error whilst copying file');
-            // return;
+            return false
         }
 
         let getWorkingLayer = await setWorkingLayer(doc)
         if(!getWorkingLayer){
-            throw new Error('Error whilst selecting WORKING layer')
+            return false
         }
+        return true;
 
 
     }, { "commandName": "General Modal" });
 
-
+    return result
 
 
 }

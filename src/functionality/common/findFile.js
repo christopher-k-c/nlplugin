@@ -14,21 +14,26 @@ async function findFile(arr, openFile){
 
             // Remove all from underscore 
             let slicedNoteName = noteName.slice(0, noteName.lastIndexOf('_'));
-            // console.log("Note Filename: ", slicedNoteName)
+
             let slicedOpenName = openName.slice(0, openName.lastIndexOf('.'));
-            // console.log("Open Image Filename: ", slicedOpenName)
+
             // Remove from .
             let noteNameSlicedFromDot = openName.slice(0, openName.lastIndexOf('.'))
             // Remove from M0
             let openNameSlicedFromM0 = noteName.slice(0, noteName.lastIndexOf('M0'))
 
+
+            // Types of match:
             if(noteName.includes("M0") && openNameSlicedFromM0 === noteNameSlicedFromDot){
                 return element.nativePath;
             }
             if (noteName.includes("_") && slicedNoteName === slicedOpenName){
                 return element.nativePath;
             }
+
         })
+
+
 
         return match // Return an object if theres a match 
 

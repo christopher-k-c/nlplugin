@@ -57,9 +57,6 @@ async function placeImage(oldActiveDoc){
       // Returned error regarding doc id not matching when set to const 
       let doc = app.activeDocument;
 
-
-      // console.log(oldActiveDoc.id)
-      // console.log(doc.id)
       //  Get dimensions of active Document 
       const docHeight = doc.height
       const docWidth = doc.width
@@ -113,7 +110,6 @@ async function placeImage(oldActiveDoc){
    } 
       
    catch(e) {
-      console.log("hshsh")
 
       console.log(e)
 
