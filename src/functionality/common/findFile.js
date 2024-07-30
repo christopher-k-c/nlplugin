@@ -1,4 +1,6 @@
-const fs = require('uxp').storage.localFileSystem;
+// const fs = require('uxp').storage.localFileSystem;
+import uxp from 'uxp';
+const fs = uxp.storage.localFileSystem;
 
 // function that finds files based on strings passed
 async function findFile(arr, openFile){

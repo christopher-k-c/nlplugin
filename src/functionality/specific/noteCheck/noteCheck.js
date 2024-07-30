@@ -55,7 +55,7 @@ async function findNotes(){
             return false
         }
 
-        let getWorkingLayer = await setWorkingLayer(doc)
+        let getWorkingLayer = await setWorkingLayer(doc, "findNotes")
         if(!getWorkingLayer){
             return false
         }

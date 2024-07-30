@@ -11,6 +11,7 @@ import checkLayers from '../../common/checkLayer';
 import buildLayers from '../buildLayers/layerStructure';
 
 
+
 async function swatchCheck(){
 
    let result = await core.executeAsModal(async (executionContext, descriptor) => {
@@ -60,13 +61,15 @@ async function swatchCheck(){
             return false
         }        
 
+
         let importImage = await placeImage(doc)
         if(!importImage){
 
             return false
         }
 
-        let getWorkingLayer = await setWorkingLayer(doc)
+        let getWorkingLayer = await setWorkingLayer(doc, "swatch")
+        console.log(getWorkingLayer)
         if(!getWorkingLayer){
             return false
         }
