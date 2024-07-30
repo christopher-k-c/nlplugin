@@ -1,12 +1,12 @@
 
 import {app, action} from 'photoshop';
 import resizeDocument from './resize';
-
-const {batchPlay} = require("photoshop").action;
+// import {action} from 'photoshop'
+// const {batchPlay} = require("photoshop").action;
 
 
 async function createMask() {
-    const result = await batchPlay(
+    const result = await action.batchPlay(
        [
           {
              _obj: "make",
@@ -32,7 +32,7 @@ async function createMask() {
  }
 
 async function invertMask() {
-   const result = await batchPlay(
+   const result = await action.batchPlay(
       [
          {
             _obj: "invert",

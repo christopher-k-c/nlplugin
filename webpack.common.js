@@ -84,5 +84,8 @@ module.exports = {
 				path.resolve(__dirname, 'plugin'),
 			]
 		})
-	]
+	],
+	stats: {
+        errorDetails: true
+    }
 };

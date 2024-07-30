@@ -1,19 +1,34 @@
 
 
-import {app} from 'photoshop';
+// import {app} from 'photoshop';
 
-async function setWorkingLayer(){
+async function setWorkingLayer(actvDoc, layerID){
 
 try{
-    const test = app.activeDocument
+    // const test = app.activeDocument
 
     // Deselect all active layers
-    for(const actvLayer of test.activeLayers){
+    for(const actvLayer of actvDoc.activeLayers){
         actvLayer.selected = false
     }
     // Select the WORKING layer
-    for(const allLayers of test.layers){
-        if(allLayers.name === "WORKING"){
+    for(const allLayers of actvDoc.layers){
+
+        let stringCase;
+
+        // Find Retouch Notes or Find Swatch Image Functions
+        if(layerID === "findNotes" || "swatch"){
+            stringCase = "WORKING"
+        }
+        // // Frequency Separation 
+        // if(layerID === "freqSep"){
+        //     stringCase = "LOW"
+        // }
+
+
+
+
+        if(allLayers.name === stringCase || allLayers.id === layerID){
             allLayers.selected = true
             return true
         }

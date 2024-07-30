@@ -18,7 +18,7 @@ const arr = [
   { id: "2", name: "Notes Check", func: testThree, type: "batch"},
   { id: "3", name: "Swatch Check", func: testFour , type: "batch"},
   { id: "4", name: "Freq Sep", func: freqSep, type: "single"},
-  { id: "5", name: "MPK", func: testOne, type: "single"},
+  // { id: "5", name: "MPK", func: testOne, type: "single"},
   { id: "6", name: "Start-Up-Batch", func: batchProcess, type: "batch"} 
   // { id: "6", name: "Test", func: testFunction},
   // { id: "7", name: "Test", func: testFunction},

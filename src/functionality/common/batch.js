@@ -1,8 +1,9 @@
-
 import {app, core} from 'photoshop'
 import openFile from './openFile';
 import startUp from '../specific/startUp/startUp';
-const fs =  require('uxp').storage.localFileSystem;
+// const fs =  require('uxp').storage.localFileSystem;
+import uxp from 'uxp';
+const fs = uxp.storage.localFileSystem;
 
 
 async function batchProcess(){

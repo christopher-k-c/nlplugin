@@ -1,7 +1,8 @@
-const photoshop = require("photoshop");
+// const photoshop = require("photoshop");
+import {app} from 'photoshop';
 
 const testOne = () => {
-  photoshop.core.showAlert("hello World");
+  app.core.showAlert("hello World");
 };
 
 

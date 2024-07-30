@@ -17,6 +17,7 @@ async function resizeDocument(doc){
 
             await doc.resizeImage(undefined, 2608)
             await doc.resizeCanvas(2300, 2608)
+            
         
         }
     
