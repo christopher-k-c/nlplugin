@@ -1,4 +1,3 @@
-// const fs = require('uxp').storage.localFileSystem;
 import uxp from 'uxp';
 const fs = uxp.storage.localFileSystem;
 

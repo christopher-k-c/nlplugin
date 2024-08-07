@@ -1,15 +1,6 @@
-
 // import findFolder from "../../common/findFolder";
 import {app, core, action} from 'photoshop'
-
-import findFolder from "../../common/findFolder"
-import findFile from "../../common/findFile"
-import openFile from "../../common/openFile";
-import placeImage from "../../common/placeImage";
-import setWorkingLayer from '../../common/setLayer';
-import checkLayers from '../../common/checkLayer';
-import buildLayers from '../buildLayers/layerStructure';
-
+import * as support from "../../collector"
 
 
 async function swatchCheck(){
@@ -23,38 +14,41 @@ async function swatchCheck(){
         const doc = app.activeDocument
 
         // Check if layer structure has been applied before carrying on
-        let layerStatus = await checkLayers()
+        let layerStatus = await support.checkLayers()
         if(!layerStatus){
             // If no layer structure, run buildLayers then carry on
-            await buildLayers()
+            let layerStatus = await support.buildLayers()
+            if(!layerStatus){
+                // End Operation
+                return
+            }
         }
-        
 
         // Remove filename from path string
         let docuPath = doc.path.replace(doc.title, "")
 
         // Get Swatch folder
-        let returnArrOfSwatch = await findFolder(docuPath, folderName);
+        let returnArrOfSwatch = await support.findFolder(docuPath, folderName);
         if(!returnArrOfSwatch){
 
             return false
         }
 
         // Get Swatch Folder Contents as array
-        let contentsOfSwatch = await findFolder(returnArrOfSwatch.nativePath, returnArrOfSwatch.name)
+        let contentsOfSwatch = await support.findFolder(returnArrOfSwatch.nativePath, returnArrOfSwatch.name)
         if(!contentsOfSwatch){
   
             return false
         }
 
         // Look for match between active doc name and filenames in contentsOfSwatch arr
-        let matchFile = await findFile(contentsOfSwatch, doc)
+        let matchFile = await support.findFile(contentsOfSwatch, doc)
         if(!matchFile){
 
             return false
         }
    
-        let openMatch = await openFile(matchFile)
+        let openMatch = await support.openFile(matchFile)
         if(!openMatch){
 
             
@@ -62,14 +56,13 @@ async function swatchCheck(){
         }        
 
 
-        let importImage = await placeImage(doc)
+        let importImage = await support.placeImage(doc)
         if(!importImage){
 
             return false
         }
 
-        let getWorkingLayer = await setWorkingLayer(doc, "swatch")
-        console.log(getWorkingLayer)
+        let getWorkingLayer = await support.setWorkingLayer(doc, "swatch")
         if(!getWorkingLayer){
             return false
         }

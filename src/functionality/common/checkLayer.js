@@ -1,8 +1,4 @@
-
-
-
-
-import {app} from 'photoshop';
+import {app, core} from 'photoshop';
 
 async function checkLayers(){
 
@@ -12,6 +8,8 @@ try{
 
     // Check document is open 
     if(!doc){
+        // console.log("File Does not exist!")
+        // core.showAlert("Missing an active document")
         return false
     }
 
@@ -22,8 +20,10 @@ try{
             testArr.push(layer.name)
         }
     }
-    // Check there are only two late
-    if(testArr.length === 2){
+    
+    
+    // If working and original exist or only background exists carry on, otherwise cancel operation
+    if(testArr.length === 2 || testArr.length === 0 && app.activeDocument.activeLayers[0].name === "Background"){
         return true 
     } else{
         return false

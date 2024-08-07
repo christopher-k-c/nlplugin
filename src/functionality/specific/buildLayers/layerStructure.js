@@ -1,6 +1,5 @@
-// ES6 import
 import { app, core } from 'photoshop';
-import resizeDocument from '../../common/resize';
+import * as support from "../../collector"
 
 async function buildLayers() {
     let result = await core.executeAsModal(async (executionContext, descriptor) => {
@@ -8,15 +7,15 @@ async function buildLayers() {
         
         try{
 
-                // If more layers than just background cancel operation
-                if(app.activeDocument.layers.length > 1){
-                    return
-                }
+            // If more layers than just background cancel operation
+            if(app.activeDocument.layers.length > 1){
+                return false
+            }
             
             const activeDoc = app.activeDocument;
 
 
-            await resizeDocument(activeDoc) 
+            await support.resizeDocument(activeDoc) 
 
 
             const layers = activeDoc.layers;

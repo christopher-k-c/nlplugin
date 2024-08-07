@@ -1,7 +1,3 @@
-
-
-// import {app} from 'photoshop';
-
 async function setWorkingLayer(actvDoc, layerID){
 
 try{
