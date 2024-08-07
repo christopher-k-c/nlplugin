@@ -1,11 +1,5 @@
 import {app, core} from 'photoshop'
-import findFolder from "../../common/findFolder"
-import findFile from "../../common/findFile"
-import openFile from "../../common/openFile";
-import placeImage from "../../common/placeImage";
-import setWorkingLayer from '../../common/setLayer';
-import buildLayers from '../buildLayers/layerStructure';
-import checkLayers from '../../common/checkLayer';
+import * as support from "../../collector"
 
 
 
@@ -18,47 +12,54 @@ async function findNotes(){
         const doc = app.activeDocument
 
         // Check if layer structure has been applied before carrying on
-        let layerStatus = await checkLayers()
+        let layerStatus = await support.checkLayers()
+
         if(!layerStatus){
             // If no layer structure, run buildLayers then carry on
-            await buildLayers()
+            let layerStatus = await support.buildLayers()
+            if(!layerStatus){
+                // End Operation
+                return
+            }
         }
 
         // Remove name from the activeDocuments file path
         let docuPath = doc.path.replace(doc.title, "")
 
         // Get Retouch Notes folder
-        let returnArrOfNote = await findFolder(docuPath, folderName);
+        let returnArrOfNote = await support.findFolder(docuPath, folderName);
         if(!returnArrOfNote){
             return false
         }
 
         // Get Retouch Notes contents
-        let contentsOfNote = await findFolder(returnArrOfNote.nativePath, returnArrOfNote.name)
+        let contentsOfNote = await support.findFolder(returnArrOfNote.nativePath, returnArrOfNote.name)
         if(!contentsOfNote){
             return false
         }
 
         // Look for match between active doc name and filenames in contentsOfNote arr
-        let matchFile = await findFile(contentsOfNote, doc)
+        let matchFile = await support.findFile(contentsOfNote, doc)
         if(!matchFile){
             return false
         }
 
-        let openMatch = await openFile(matchFile)
+        let openMatch = await support.openFile(matchFile)
         if(!openMatch){
             return false
         }
 
-        let importImage = await placeImage(doc)
+        let importImage = await support.placeImage(doc)
         if(!importImage){
             return false
         }
 
-        let getWorkingLayer = await setWorkingLayer(doc, "findNotes")
+        let getWorkingLayer = await support.setWorkingLayer(doc, "findNotes")
         if(!getWorkingLayer){
             return false
         }
+
+        // app.activeDocument.save()
         return true;
 
 

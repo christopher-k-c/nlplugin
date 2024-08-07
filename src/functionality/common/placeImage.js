@@ -1,9 +1,5 @@
-
 import {app, action} from 'photoshop';
-import resizeDocument from './resize';
-// import {action} from 'photoshop'
-// const {batchPlay} = require("photoshop").action;
-
+import * as support from "../collector"
 
 async function createMask() {
     const result = await action.batchPlay(
@@ -63,7 +59,7 @@ async function placeImage(oldActiveDoc){
       
       // First step is to resize 
       if(docHeight !== 2608 && docWidth !== 2300){
-         await resizeDocument(doc) 
+         await support.resizeDocument(doc) 
       }
 
 
@@ -98,7 +94,7 @@ async function placeImage(oldActiveDoc){
          let copyToFile = await swatchLayer.duplicate(oldActiveDoc)
          // Turn off Swatch layer
          let swatch = oldActiveDoc.activeLayers[0]
-         swatch.visible = false
+         // swatch.visible = false
 
          await doc.closeWithoutSaving()
 

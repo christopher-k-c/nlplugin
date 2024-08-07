@@ -1,26 +1,28 @@
-import {app} from 'photoshop'
-import buildLayers from '../buildLayers/layerStructure'
-import findNotes from '../noteCheck/noteCheck'
-import swatchCheck from '../swatchCheck/swatchCheck'
+import * as support from "../../collector"
 
 async function startUp(){
-    // Returns true if either string is found 
-    // let result = app.activeDocument.layers.some(element => element.name === 'WORKING' && element.name === 'ORIGINAL')
 
-    // console.log(result)
-    // If more layers than just background cancel operation && !result
-    if(app.activeDocument.layers.length > 1){
-        return
+
+    try{   
+        
+        let layerStatus = await support.checkLayers()
+        if(!layerStatus){
+            // End Operation
+            return
+        }
+        let createLayers = await support.buildLayers();
+        if(!createLayers){
+            // End Operation
+            return
+        }
+        // Search for a retouch note image 
+        let checkNotes = await support.findNotes();
+        // Search for a swatch image 
+        let checkSwatch = await support.swatchCheck();
+
+    } catch(error){
+
     }
-
-    let createLayers = await buildLayers();
-
-
-    let checkNotes = await findNotes();
-
-
-    let checkSwatch = await swatchCheck();
-
 
 }
 

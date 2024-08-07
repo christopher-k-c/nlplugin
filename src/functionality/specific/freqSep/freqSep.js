@@ -1,4 +1,5 @@
-import { app, core, action, constants } from 'photoshop';
+import { app, core, action } from 'photoshop';
+import * as support from "../../collector"
 
 async function merge() {
     try {
@@ -82,6 +83,11 @@ async function freqSep() {
     await core.executeAsModal(async (executionContext, descriptor) => {
         try {
             const doc = app.activeDocument;
+
+            let layerStatus = await support.checkLayers()
+            if(!layerStatus){
+                return false
+            }
 
             // Deselect All Layers
             let allLayers = doc.layers;

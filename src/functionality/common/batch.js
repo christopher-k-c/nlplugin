@@ -1,13 +1,13 @@
 import {app, core} from 'photoshop'
-import openFile from './openFile';
-import startUp from '../specific/startUp/startUp';
-// const fs =  require('uxp').storage.localFileSystem;
+import * as support from "../collector"
 import uxp from 'uxp';
 const fs = uxp.storage.localFileSystem;
 
 
 async function batchProcess(){
     const result = await core.executeAsModal(async (executionContext, descriptor) => {
+
+        console.log("This is the support import")
         const folder = await fs.getFolder();
 
         const contents = await folder.getEntries()
@@ -16,14 +16,14 @@ async function batchProcess(){
 
             if(item.isFile === true && (item.name.includes(".tif") || item.name.includes(".psd"))){
 
-                let opnFile = await openFile(item)
+                let opnFile = await support.openFile(item)
                 if(opnFile){
-                    await startUp()
+                    await support.startUp()
                     if(app.activeDocument.saved === true){
-                        app.activeDocument.close()
+                        await app.activeDocument.close()
                     } else{
-                        app.activeDocument.save()
-                        app.activeDocument.close()
+                        await app.activeDocument.save()
+                        await app.activeDocument.close()
                     }
                 }
             }
