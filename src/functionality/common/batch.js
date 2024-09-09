@@ -5,9 +5,9 @@ const fs = uxp.storage.localFileSystem;
 
 
 async function batchProcess(){
+
     const result = await core.executeAsModal(async (executionContext, descriptor) => {
 
-        console.log("This is the support import")
         const folder = await fs.getFolder();
 
         const contents = await folder.getEntries()
@@ -29,7 +29,10 @@ async function batchProcess(){
             }
 
         }
-    })
+
+        
+        
+},{commandName: "Batch Process"})
 
 }
 export default batchProcess;

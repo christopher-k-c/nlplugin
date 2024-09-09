@@ -1,11 +1,58 @@
-import { app, core } from 'photoshop';
+import { app, core, action } from 'photoshop';
 import * as support from "../../collector"
+
+
+
+
+
+
+async function convertProfile() {
+    
+    try{
+    await action.batchPlay(
+      [
+         {
+            _obj: "convertToProfile",
+            _target: [
+               {
+                  _ref: "document",
+                  _enum: "ordinal",
+                  _value: "targetEnum"
+               }
+            ],
+            to: "sRGB IEC61966-2.1",
+            intent: {
+               _enum: "intent",
+               _value: "colorimetric"
+            },
+            mapBlack: true,
+            dither: true,
+            flatten: false,
+            rasterizePlaced: false,
+            shadowMode: -1,
+            _options: {
+               dialogOptions: "dontDisplay"
+            }
+         }
+      ],
+      {}
+   );
+}
+catch (e){
+console.log(e)    
+}
+}
+
 
 async function buildLayers() {
     let result = await core.executeAsModal(async (executionContext, descriptor) => {
 
         
         try{
+
+
+
+            
 
             // If more layers than just background cancel operation
             if(app.activeDocument.layers.length > 1){
@@ -16,7 +63,7 @@ async function buildLayers() {
 
 
             await support.resizeDocument(activeDoc) 
-
+            await convertProfile()
 
             const layers = activeDoc.layers;
             const backgroundLayer = layers[0];
@@ -37,7 +84,7 @@ async function buildLayers() {
         }
 
         
-    }, { "commandName": "Layer Structure Modal" });
+    }, { "commandName": "Build Layer Structure" });
 
     return result
 }

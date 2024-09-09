@@ -6,7 +6,10 @@ const arr = [
   { id: "2", name: "Notes Check", func: support.findNotes, type: "batch"},
   { id: "3", name: "Swatch Check", func: support.swatchCheck , type: "batch"},
   { id: "4", name: "Freq Sep", func: support.freqSep, type: "single"},
-  { id: "5", name: "Start-Up-Batch", func: support.batchProcess, type: "batch"} 
+  { id: "5", name: "Start-Up-Batch", func: support.batchProcess, type: "batch"},
+  { id: "6", name: "Texture", func: support.importGlitter, type: "single"},
+
+  // { id: "6", name: "Logs", func: null, type: "single"}
 ];
 
 export default arr
