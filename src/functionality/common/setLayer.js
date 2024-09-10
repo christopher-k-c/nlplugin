@@ -16,6 +16,10 @@ try{
         if(layerID === "findNotes" || "swatch"){
             stringCase = "WORKING"
         }
+        
+        if(layerID === "glitter"){
+            stringCase = "ORIGINAL"
+        }
         // // Frequency Separation 
         // if(layerID === "freqSep"){
         //     stringCase = "LOW"
@@ -26,6 +30,8 @@ try{
 
         if(allLayers.name === stringCase || allLayers.id === layerID){
             allLayers.selected = true
+            if(stringCase === "ORIGINAL")
+                allLayers.visible = false
             return true
         }
     }

@@ -69,7 +69,7 @@ async function swatchCheck(){
 
 
         return true
-    })
+    }, { "commandName": "Check if a swatch image exists" });
     return result
 }
 

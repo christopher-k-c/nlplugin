@@ -63,7 +63,7 @@ async function findNotes(){
         return true;
 
 
-    }, { "commandName": "General Modal" });
+    }, { "commandName": "Check if a retouch note image exists" });
 
     return result
 

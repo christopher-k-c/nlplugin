@@ -14,6 +14,8 @@ import freqSep from "./specific/freqSep/freqSep"
 import findNotes from "./specific/noteCheck/noteCheck"
 import startUp from "./specific/startUp/startUp"
 import swatchCheck from "./specific/swatchCheck/swatchCheck"
+import importGlitter from "./specific/glitterFiles/importGlitter"
+import upload from "./specific/upload/upload"
 
 export {
     // Common Exports
@@ -31,5 +33,7 @@ export {
     freqSep,
     findNotes,
     startUp,
-    swatchCheck
+    swatchCheck,
+    importGlitter,
+    upload
 }
