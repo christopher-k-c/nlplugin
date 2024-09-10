@@ -6,8 +6,10 @@ import * as support from '../../collector'
 
 async function importGlitter(){
     await core.executeAsModal(async (executionContext, descriptor) => {
-        // Get active document 
         const doc = app.activeDocument
+        if(!doc){
+            return
+        }
         try {
             await support.setWorkingLayer(app.activeDocument, "glitter")
             const pluginFolder = await fs.getPluginFolder();
@@ -33,6 +35,8 @@ async function importGlitter(){
         }
         catch(e){
             console.log(e)
+            core.showAlert(e)
+            return 
         }
     });
 }
