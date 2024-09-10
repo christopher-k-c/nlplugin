@@ -1,10 +1,10 @@
 import {app, core} from 'photoshop'
-import * as support from "../collector"
+import * as support from "../../collector"
 import uxp from 'uxp';
 const fs = uxp.storage.localFileSystem;
 
 
-async function batchProcess(){
+async function batchUpload(processID, func){
 
     const result = await core.executeAsModal(async (executionContext, descriptor) => {
 
@@ -18,13 +18,7 @@ async function batchProcess(){
 
                 let opnFile = await support.openFile(item)
                 if(opnFile){
-                    await support.startUp()
-                    if(app.activeDocument.saved === true){
-                        await app.activeDocument.close()
-                    } else{
-                        await app.activeDocument.save()
-                        await app.activeDocument.close()
-                    }
+                    await support.upload()
                 }
             }
 
@@ -35,4 +29,5 @@ async function batchProcess(){
 },{commandName: "Batch Process"})
 
 }
-export default batchProcess;
+export default batchUpload;
+

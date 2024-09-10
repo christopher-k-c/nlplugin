@@ -25,7 +25,6 @@ async function upload(){
             // Search for the Completed Flattened folder
 
             let checkActDocDirectory = folderContents.filter((entry) => entry.isFolder).find((fldr) => fldr.name === "Completed Flattened")
-            console.log("Hello")
             // If Completed Flattened is misisng alert user and end function 
             if(checkActDocDirectory === undefined){
                 core.showAlert(doc.name + " is not in the correct folder")

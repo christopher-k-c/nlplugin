@@ -1,5 +1,5 @@
 // Import Common Functions 
-import batchProcess from "./common/batch"
+// import batchProcess from "./common/batch"
 import checkLayers from "./common/checkLayer"
 import findFile from "./common/findFile"
 import findFolder from "./common/findFolder"
@@ -16,10 +16,12 @@ import startUp from "./specific/startUp/startUp"
 import swatchCheck from "./specific/swatchCheck/swatchCheck"
 import importGlitter from "./specific/glitterFiles/importGlitter"
 import upload from "./specific/upload/upload"
+import batchUpload from "./specific/batchUpload/batchUpload"
+import batchStartUp from "./specific/batchStartUp/batchStartUp"
+import batchUploadSpecific from "./specific/batchUpload/batchUploadSpecific"
 
 export {
     // Common Exports
-    batchProcess,
     checkLayers,
     findFile,
     findFolder,
@@ -35,5 +37,8 @@ export {
     startUp,
     swatchCheck,
     importGlitter,
-    upload
+    upload,
+    batchUpload,
+    batchStartUp,
+    batchUploadSpecific
 }
