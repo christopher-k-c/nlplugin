@@ -1,6 +1,6 @@
 // import findFolder from "../../common/findFolder";
 import {app, core, action} from 'photoshop'
-import * as support from "../../collector"
+import * as support from "../collector"
 
 
 async function swatchCheck(){
