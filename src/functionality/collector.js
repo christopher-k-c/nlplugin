@@ -20,6 +20,7 @@ import batchUpload from "./specific/batchUpload"
 import batchStartUp from "./specific/batchStartUp"
 import batchUploadSpecific from "./specific/batchUploadSpecific"
 import docCheck from "./common/docCheck"
+import layeredUpload from "./specific/layeredUpload"
 
 export {
     // Common Exports
@@ -42,5 +43,6 @@ export {
     upload,
     batchUpload,
     batchStartUp,
-    batchUploadSpecific
+    batchUploadSpecific,
+    layeredUpload
 }

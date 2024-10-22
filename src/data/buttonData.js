@@ -10,7 +10,8 @@ const arr = [
   { id: "6", name: "Upload", func: support.upload, type: "single"},
   { id: "7", name: "Batch-Upload-Folder", func: support.batchUpload, type: "batch"},
   { id: "8", name: "Batch-Upload-Files", func: support.batchUploadSpecific, type: "batch"},
-  { id: "9", name: "Batch-Start-Up", func: support.batchStartUp, type: "batch"}
+  { id: "9", name: "Batch-Start-Up", func: support.batchStartUp, type: "batch"},
+  { id: "10", name: "Layered-Upload", func: support.layeredUpload, type: "single"}
 ];
 
 export default arr
