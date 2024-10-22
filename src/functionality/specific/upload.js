@@ -1,7 +1,7 @@
 
 
 import {app, core} from 'photoshop'
-import * as support from "../../collector"
+import * as support from "../collector"
 import uxp from 'uxp';
 const fs = uxp.storage.localFileSystem;
 
@@ -9,11 +9,15 @@ async function upload(){
     try {
         await core.executeAsModal( async () => {
 
+            console.log("Am i being called?")
+
             // If no open file end function 
-            let initialFileCheck = await support.checkLayers();
-            if(!initialFileCheck){
-                return; 
+            let doesDocExist = await support.docCheck()
+            if(!doesDocExist){
+                return
             }
+
+            console.log("Does a file exist??")
             // Get Active Doucment 
             let doc = app.activeDocument
             // Get the open files path as string

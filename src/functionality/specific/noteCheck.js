@@ -1,5 +1,5 @@
 import {app, core} from 'photoshop'
-import * as support from "../../collector"
+import * as support from "../collector"
 
 
 

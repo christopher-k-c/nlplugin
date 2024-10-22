@@ -9,16 +9,17 @@ import resizeDocument from "./common/resize"
 import setWorkingLayer from "./common/setLayer"
 
 // Specifc Imports
-import buildLayers from "./specific/buildLayers/layerStructure"
-import freqSep from "./specific/freqSep/freqSep"
-import findNotes from "./specific/noteCheck/noteCheck"
-import startUp from "./specific/startUp/startUp"
-import swatchCheck from "./specific/swatchCheck/swatchCheck"
-import importGlitter from "./specific/glitterFiles/importGlitter"
-import upload from "./specific/upload/upload"
-import batchUpload from "./specific/batchUpload/batchUpload"
-import batchStartUp from "./specific/batchStartUp/batchStartUp"
-import batchUploadSpecific from "./specific/batchUpload/batchUploadSpecific"
+import buildLayers from "./specific/layerStructure"
+import freqSep from "./specific/freqSep"
+import findNotes from "./specific/noteCheck"
+import startUp from "./specific/startUp"
+import swatchCheck from "./specific/swatchCheck"
+import importGlitter from "./specific/importGlitter"
+import upload from "./specific/upload"
+import batchUpload from "./specific/batchUpload"
+import batchStartUp from "./specific/batchStartUp"
+import batchUploadSpecific from "./specific/batchUploadSpecific"
+import docCheck from "./common/docCheck"
 
 export {
     // Common Exports
@@ -29,6 +30,7 @@ export {
     placeImage,
     resizeDocument,
     setWorkingLayer,
+    docCheck,
 
     // Specifc Exports
     buildLayers, 

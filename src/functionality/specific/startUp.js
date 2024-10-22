@@ -1,4 +1,4 @@
-import * as support from "../../collector"
+import * as support from "../collector"
 import {core, app, action} from 'photoshop';
 
 
@@ -60,6 +60,7 @@ async function startUp(){
         let layerStatus = await support.checkLayers()
         if(!layerStatus){
             // End Operation
+            console.log("Helo")
             return
         }
         let createLayers = await support.buildLayers();
