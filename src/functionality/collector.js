@@ -21,6 +21,8 @@ import batchStartUp from "./specific/batchStartUp"
 import batchUploadSpecific from "./specific/batchUploadSpecific"
 import docCheck from "./common/docCheck"
 import layeredUpload from "./specific/layeredUpload"
+import multiPackTemplate from "./specific/mpTemplate"
+import convertProfile from "./common/convertProfile"
 
 export {
     // Common Exports
@@ -32,6 +34,7 @@ export {
     resizeDocument,
     setWorkingLayer,
     docCheck,
+    convertProfile,
 
     // Specifc Exports
     buildLayers, 
@@ -44,5 +47,6 @@ export {
     batchUpload,
     batchStartUp,
     batchUploadSpecific,
-    layeredUpload
+    layeredUpload,
+    multiPackTemplate
 }

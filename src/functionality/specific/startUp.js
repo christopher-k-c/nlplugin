@@ -47,11 +47,6 @@ async function startUp(){
 
     // Events recognized as notifiers are not re-playable in most of the cases. There is high chance that generated code won't work.
 
-
-
-
-
-
     try{   
 
         // await convertProfile()
@@ -60,7 +55,12 @@ async function startUp(){
         let layerStatus = await support.checkLayers()
         if(!layerStatus){
             // End Operation
-            console.log("Helo")
+
+            return
+        }
+
+        if(app.activeDocument.width > app.activeDocument.height){
+            await support.multiPackTemplate()
             return
         }
         let createLayers = await support.buildLayers();
