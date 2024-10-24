@@ -62,7 +62,10 @@ async function buildLayers() {
             const activeDoc = app.activeDocument;
 
 
-            await support.resizeDocument(activeDoc) 
+            if(app.activeDocument.width < app.activeDocument.height){
+               await support.resizeDocument(activeDoc) 
+            }
+            
             await convertProfile()
 
             const layers = activeDoc.layers;

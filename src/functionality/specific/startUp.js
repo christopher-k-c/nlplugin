@@ -59,10 +59,7 @@ async function startUp(){
             return
         }
 
-        if(app.activeDocument.width > app.activeDocument.height){
-            await support.multiPackTemplate()
-            return
-        }
+
         let createLayers = await support.buildLayers();
         if(!createLayers){
             // End Operation
@@ -72,6 +69,11 @@ async function startUp(){
         let checkNotes = await support.findNotes();
         // Search for a swatch image 
         let checkSwatch = await support.swatchCheck();
+
+        if(app.activeDocument.width > app.activeDocument.height){
+            console.log("Shit")
+            await support.multiPackTemplate()
+        }
 
     } catch(error){
 

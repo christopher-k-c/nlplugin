@@ -15,6 +15,7 @@ try{
         let width = app.activeDocument.width;
         let height = app.activeDocument.height;
         if (width !== 2300 || height !== 2608) {
+            
             await support.resizeDocument(app.activeDocument);
         }
         
