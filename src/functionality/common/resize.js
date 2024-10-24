@@ -9,7 +9,11 @@ async function resizeDocument(doc){
     
 
             // Call Multi Pack Template Function 
+            console.log("// Call Multi Pack Template Function")
         
+            await doc.resizeImage(2608, undefined)
+            await doc.resizeCanvas(2608, 2300)
+
         }   
         else{
 
