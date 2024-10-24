@@ -213,9 +213,13 @@ async function multiPackTemplate(){
             if (!layerStatus) return false;
          }
          // Try importing the retouch notes 
-         await support.findNotes();
+         let note = doc.layers.find((el) => el.name === "Retouch Notes")
+         if(!note){
+            await support.findNotes();
+         }
+         let swatch = doc.layers.find((el) => el.name === "SWATCH")
          // Try importing the swatch notes 
-         await support.swatchCheck();
+         if(!swatch) {await support.swatchCheck();}
          // Convert the colour profile if needed
          await support.convertProfile()
          // Resize Image Width 
