@@ -65,6 +65,10 @@ async function buildLayers() {
             if(app.activeDocument.width < app.activeDocument.height){
                await support.resizeDocument(activeDoc) 
             }
+
+            if(app.activeDocument.width > app.activeDocument.height){
+               await app.activeDocument.resizeImage(2300, undefined)
+            }
             
             await convertProfile()
 
