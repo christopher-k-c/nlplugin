@@ -23,6 +23,7 @@ import docCheck from "./common/docCheck"
 import layeredUpload from "./specific/layeredUpload"
 import multiPackTemplate from "./specific/mpTemplate"
 import convertProfile from "./common/convertProfile"
+import saveLZW from "./common/saveLZW"
 
 export {
     // Common Exports
@@ -35,6 +36,7 @@ export {
     setWorkingLayer,
     docCheck,
     convertProfile,
+    saveLZW,
 
     // Specifc Exports
     buildLayers, 

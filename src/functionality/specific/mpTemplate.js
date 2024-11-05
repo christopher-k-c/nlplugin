@@ -204,6 +204,16 @@ async function recursLayerSearch(arr){
 
 async function multiPackTemplate(){
    await core.executeAsModal(async () => {
+      // To Do:
+      // Need to refine/implement error handeling 
+      // Block function from running in certain edge cases 
+
+      if(app.activeDocument.width < app.activeDocument.height){
+         // console.log()
+         return
+      }
+
+
       try{
          // Get the active document 
          let doc = app.activeDocument
@@ -222,10 +232,13 @@ async function multiPackTemplate(){
          if(!swatch) {await support.swatchCheck();}
          // Convert the colour profile if needed
          await support.convertProfile()
+         const currentHeight = doc.height;
          // Resize Image Width 
-         await doc.resizeImage(2300, 2028)
+         await doc.resizeImage(2300, undefined)
+
+         const currentWidth = doc.width;
          // Resize Canvas Height 
-         await doc.resizeCanvas(2300, 2608)
+         await doc.resizeCanvas(currentWidth, 2608)
          // Create flatlay layer
          doc.createLayer({name: "F3F4F4"})
          // Fill flatlay layer with #F3F4F4

@@ -20,6 +20,14 @@ const App = () => {
       
       ))}
 
+
+
+      <div className="version">
+
+      {/* <div>v: 1.1.1</div> */}
+
+      </div>
+
     </>
   );
 };
