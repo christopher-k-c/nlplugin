@@ -5,28 +5,6 @@ import * as support from "../collector"
 import uxp from 'uxp';
 const fs = uxp.storage.localFileSystem;
 
-async function saveAsLzw(){
-    await action.batchPlay(
-        [
-        {
-            _obj: "save",
-            in: {
-                _path: app.activeDocument.path.replace(app.activeDocument.name, ""),
-                _kind: "local"
-            },
-            documentID: 1123,
-            saveStage: {
-                _enum: "saveStageType",
-                _value: "saveSucceeded"
-            },
-            _options: {
-                dialogOptions: "dontDisplay"
-            }
-        }
-        ],
-        {}
-    );
-}
 
 async function upload(){
     try {
@@ -36,13 +14,6 @@ async function upload(){
             if(!doesDocExist){
                 return
             }
-
-
-
-
-
-
-
             // Get Active Doucment 
             let doc = app.activeDocument
             // Get the open files path as string
@@ -105,7 +76,8 @@ async function upload(){
 
             // Copies the active document to the Completed Flattened folder - flattens layers
             await doc.flatten()
-            await doc.save()
+            // await doc.save()
+            await support.saveLZW()
             let flattenedFileDestination = await folder.getEntry("Completed Flattened");
             await openFile.moveTo(flattenedFileDestination, {overwrite: true});
             

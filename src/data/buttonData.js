@@ -12,7 +12,8 @@ const arr = [
   { id: "8", name: "Batch-Upload-Files", func: support.batchUploadSpecific, type: "batch"},
   { id: "9", name: "Batch-Start-Up", func: support.batchStartUp, type: "batch"},
   { id: "10", name: "Layered-Upload", func: support.layeredUpload, type: "single"},
-  { id: "11", name: "Multi-Pack", func: support.multiPackTemplate, type: "single"}
+  { id: "11", name: "Multi-Pack", func: support.multiPackTemplate, type: "single"},
+  { id: "12", name: "Save", func: support.saveLZW, type: "single"}
 ];
 
 export default arr
