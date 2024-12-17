@@ -1,4 +1,8 @@
 
+html{
+    color: #d5d5d5;
+}
+
 .root-container{
     padding: 10px;
     width: auto; /* Makes the container width determined by its content and the parent element's constraints */
@@ -18,4 +22,18 @@ sp-action-button{
     }
 }
 
+h4{
+    color: #201f1f;
+    padding-bottom: 5px;
+    padding-top: 10px;
+    margin-bottom: 5px;
+    border-bottom: 2px solid #201f1f;
+
+}
+
+.version{
+    display: flex;
+    justify-content: end;
+    margin-top: 20px;
+}
 
