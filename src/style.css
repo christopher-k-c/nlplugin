@@ -1,9 +1,21 @@
 
-
-.version{
-    margin: 10px 10px 0 0;
-    padding: 0 0 0 0;
-    color: black;
-
-
+.root-container{
+    padding: 10px;
+    width: auto; /* Makes the container width determined by its content and the parent element's constraints */
+    height: 100vh; /* Set the height of the container to fill the viewport */
+    overflow-y: auto; /* Display a scroll bar on the vertical axis */
 }
+
+sp-action-button{
+    width: 100%; /* Set the button width to fill the entire width of its container */
+}
+
+/* When the viewport width is greater than or equal to 500px, set the button width to 50% of its container */
+@media (min-width: 500px) { 
+    sp-action-button{
+        width: 50%;
+        
+    }
+}
+
+

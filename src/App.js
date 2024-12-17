@@ -1,8 +1,5 @@
-// import Button from "./components/Buttons";
 import "./style.css";
 import arr from "./data/buttonData";
-import { app } from "photoshop";
-import { useState, useEffect } from "react";
 
 const App = () => {
 
@@ -34,62 +31,3 @@ const App = () => {
 
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const App = () => {
-
-//   return (
-    
-//     <>
-
-//       {arr.map((el) => (
-
-//         <Button key={el.id} onClick={el.func}>
-          
-//           {el.name}
-          
-//         </Button>
-//       ))}
-
-//     </>
-//   );
-// };
-
-
-// export default App;
-
-
