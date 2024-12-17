@@ -3,9 +3,9 @@ import ReactDOM from "react-dom";
 import App from "./App";
 
 var root = document.createElement("div");
-root.style.height = "100vh";
-root.style.overflow = "auto";
-root.style.padding = "10px 20px";
+// Add an id and class
+root.id = "root-div"; // Assigns an id
+root.className = "root-container"; // Assigns a class
 
 ReactDOM.render(
   <App />,
