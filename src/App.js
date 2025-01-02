@@ -1,4 +1,4 @@
-import "./style.css";
+import styles from "./css/App.modules.css";
 import arr from "./data/buttonData";
 import pkg from '../package.json'
 
@@ -12,6 +12,7 @@ const App = () => {
           key={el.id} 
           onClick={el.func} 
           size="s"
+          class={styles.spActionButton} 
           style={{
             backgroundColor: 
               el.name.includes("Upload") ? "black"
@@ -36,11 +37,11 @@ const App = () => {
       </div>
     
       <div className="batch-buttons">
-        <h4>Batch Actions</h4>
+        <h4 className={styles.h4}>Batch Actions</h4>
         {renderButtonsByType("Batch")}
       </div>
     
-      <div className="version">
+      <div className={styles.version}>
         <div>v: {pkg.version}</div>
       </div>
 
