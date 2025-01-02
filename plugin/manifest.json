@@ -49,7 +49,7 @@
 			"icons": [{
 					"width": 23,
 					"height": 23,
-					"path": "icons/DarkTheme.png",
+					"path": "icons/newlook_LOGO.png",
 					"scale": [1, 2],
 					"theme": ["dark", "darkest", "medium"],
 					"species": ["chrome"]
@@ -57,7 +57,7 @@
 				{
 					"width": 23,
 					"height": 23,
-					"path": "icons/LightTheme.png",
+					"path": "icons/newlook_LOGO.png",
 					"scale": [1, 2],
 					"theme": ["lightest", "light"],
 					"species": ["chrome"]
@@ -68,7 +68,7 @@
 	"icons": [{
 			"width": 48,
 			"height": 48,
-			"path": "icons/DarkTheme_plugins.png",
+			"path": "icons/newlook_LOGO.png",
 			"scale": [1, 2],
 			"theme": ["dark", "darkest", "medium"],
 			"species": ["pluginList"]
@@ -76,7 +76,7 @@
 		{
 			"width": 48,
 			"height": 48,
-			"path": "icons/LightTheme_plugins.png",
+			"path": "icons/newlook_LOGO.png",
 			"scale": [1, 2],
 			"theme": ["lightest", "light"],
 			"species": ["pluginList"]
