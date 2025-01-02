@@ -1,0 +1,39 @@
+/* App.modules.css */
+
+html {
+    color: #d5d5d5;
+}
+
+.rootContainer {
+    padding: 10px;
+    width: auto; 
+    height: 100vh; 
+    overflow-y: auto;
+
+    /* background-color: aqua; */
+}
+
+.spActionButton {
+    width: 100%;
+    /* background-color: blue; */
+}
+
+@media (min-width: 500px) {
+    .spActionButton {
+        width: 50%;
+    }
+}
+
+h4 {
+    color: #201f1f;
+    padding-bottom: 5px;
+    padding-top: 10px;
+    margin-bottom: 5px;
+    border-bottom: 2px solid #201f1f;
+}
+
+.version {
+    display: flex;
+    justify-content: end;
+    margin-top: 20px;
+}
