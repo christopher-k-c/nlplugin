@@ -24,6 +24,7 @@ import layeredUpload from "./specific/layeredUpload"
 import multiPackTemplate from "./specific/mpTemplate"
 import convertProfile from "./common/convertProfile"
 import saveLZW from "./common/saveLZW"
+import userMetrics from "./specific/userMetrics"
 
 export {
     // Common Exports
@@ -50,5 +51,6 @@ export {
     batchStartUp,
     batchUploadSpecific,
     layeredUpload,
-    multiPackTemplate
+    multiPackTemplate,
+    userMetrics
 }
