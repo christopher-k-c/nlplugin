@@ -1,0 +1,8 @@
+.rootContainer {
+    padding: 10px;
+    width: auto; 
+    height: 100vh; 
+    overflow-y: auto;
+
+    /* background-color: aqua; */
+}

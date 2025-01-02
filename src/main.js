@@ -3,7 +3,8 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import UserMetrics from "./UserMetrics";
 import { entrypoints } from "uxp";
-import styles from './css/App.modules.css'
+import appPanel from './css/App.modules.css'
+import metricsPanel from './css/UserMetrics.modules.css'
 
 
 // Multi-Panel Set-up
@@ -16,7 +17,7 @@ entrypoints.setup({
         }
         const root = document.createElement("div");
         root.id = "root-div"; 
-        root.className = styles.rootContainer; 
+        root.className = appPanel.rootContainer; 
         body.appendChild(root);
 
         ReactDOM.render(<App />, root);
@@ -30,7 +31,7 @@ entrypoints.setup({
         
         const root = document.createElement("div");
         root.id = "root-metrics"; 
-        root.className = "root-container"; 
+        root.className = metricsPanel.rootContainer; 
         body.appendChild(root);
         ReactDOM.render(<UserMetrics />, root);
       },

@@ -80,6 +80,10 @@ async function upload(){
             await support.saveLZW()
             let flattenedFileDestination = await folder.getEntry("Completed Flattened");
             await openFile.moveTo(flattenedFileDestination, {overwrite: true});
+
+
+
+            // Then update UserMetrics / Local Storage objects need to reflect the folder state
             
             // Closes open file
             await doc.closeWithoutSaving()
