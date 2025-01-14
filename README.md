@@ -2,64 +2,50 @@
 
 An Adobe Photoshop Plugin for the Newlook retouch team. An all-encompassing automation solution that aims to centralise all actions, scripts and plugins.
 
-## To-do
+![Plugin](/assets/documention/plugin.png)
 
-Core aims:
 
-* The plugin will offer multiple features, i.e. import retouch notes, build layer structure etc
-* Each feature will be accessible individually 
-* The plugin will offer a composite of features, here's an example of one:
-
-### Layer Structure Composite Function (Pseudocode):
-
-```
-Check if an active document exists:
-    If yes:
-        If filename contains 'Z':
-            Move file to 'doNotEdit' folder and close active document
-        Else:
-            If file is landscape:
-                Run multi-pack template
-            Else if file is portrait:
-                Apply file layer structure and resize image
-                
-        Check if layer structure is applied:
-            If yes:
-                If 'retouch notes' folder exists:
-                    Search for matching note and apply to active document
-                If 'swatch' folder exists:
-                    Search for matching note and apply to active document
-```
-
-### Scripts/Solutions
-
-#### Key Features 
+#### Plugin Features 
 - [x] Layer Structure Composite Function
 - [x] Retouch Notes Script
 - [x] Swatches Script 
-- [ ] Colour Correction Script
-- [ ] Frequency Separation Script
-- [ ] Dust and scratches Script
-- [ ] Multipack Template Script
+- [x] Colour Correction Script
+- [x] Frequency Separation Script
+- [x] Multipack Template Script
+- [x] Upload Colour Correction file
+- [x] Upload Final Images 
+- [x] Batch Start-up
+- [x] Batch Upload
+- [x] Basic Responsive User Interface 
 
-#### Uploading
-- [ ] Upload Colour Correction file
-- [ ] Upload Final Images 
-
-#### Nice-to-haves
+#### In-Progress
+- [ ] User Metrics i.e. Retouching KPIs and daily output 
+- [ ] Running unit tests with Mocha 
+- [ ] Apply color corrections to files sharing the same SKU
 - [ ] Moire Reduction (Access camera raw)
-- [ ] Acccess to guides
-- [ ] Notification system
+- [ ] Acccess to team guides
+- [ ] Notification system (scraping dam for sku metadata)
 
-### Modular programming to-do
+#### Long Term Goals 
 
-- [x] main.js to handle button eventlisteners 
-- [x] handler.js  to contain the handler function for the button event, using a switch case to target correct function on click event 
-- [x] An organized folder structure containing specific and non-specific/Reusable blocks of code
+- [ ] Code review and best-practices: 
+    * Error handling needs a review/strategy  
+    * Re-write/breakdown large code blocks into more resuseable functions i.e helper functions 
+    * Ensure comments are clear and frequent  
+
+
 
 
 ## Documentation
 
+For development:
+```
+npm run watch 
+```
+For Production:
+```
+npm run prod 
+```
 ### Set-up
 
 Important to paste the following into the manifest.json otherwise read/writing to the local file system is not possible, place key/pair value below host key/[air value]:
@@ -94,10 +80,15 @@ Developer mode needs to be enabled inside your Photoshop Application, Photoshop 
 
 * Adobe Photoshop API
 * Adobe UXP API
-* React, ES6 Javascript (occasionaly Common JS Syntax), HTML/CSS, Node
+* React, 
+* ES6 Javascript (Not using common JS gives issues when compiling for production) 
+* CSS Modular (Might implement tailwindcss)
+* Node
+* Webpack
+* Mocha 
 * UXP Developer Tool
 * Visual Studio Code
-* Hope to implement tailwindcss 
+
 
 
 
