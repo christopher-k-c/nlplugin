@@ -204,6 +204,7 @@ async function recursLayerSearch(arr){
 
 async function multiPackTemplate(){
    await core.executeAsModal(async () => {
+
       // To Do:
       // Need to refine/implement error handeling 
       // Block function from running in certain edge cases 
@@ -268,10 +269,12 @@ async function multiPackTemplate(){
          const modelGroup =  await doc.createLayerGroup({
             name: "Model", visible: true, fromLayers: [...spreadArray], group: true
          })
-         // Target the original
+         // Target the original and working
          let turnOriginalOff = doc.activeLayers[0].layers.find((original) => original.name === "ORIGINAL")
-         // Turn the original layer off
+         let turnWorkingOn= doc.activeLayers[0].layers.find((working) => working.name === "WORKING")
+         // Turn the original layer off and working on
          turnOriginalOff.visible = false
+         turnWorkingOn.visible = true
          // Apply active selection to model group as mask
          await maskFromSelection()
          // Create the special/main background layer 

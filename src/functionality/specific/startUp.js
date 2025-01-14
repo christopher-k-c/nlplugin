@@ -44,12 +44,8 @@ import {core, app, action} from 'photoshop';
 
 async function startUp(){
     await core.executeAsModal(async (executionContext, descriptor) => {
-
-    // Events recognized as notifiers are not re-playable in most of the cases. There is high chance that generated code won't work.
-
     try{   
 
-        // await convertProfile()
 
         
         let layerStatus = await support.checkLayers()
@@ -71,7 +67,6 @@ async function startUp(){
         let checkSwatch = await support.swatchCheck();
 
         if(app.activeDocument.width > app.activeDocument.height){
-            console.log("Shit")
             await support.multiPackTemplate()
         }
 
