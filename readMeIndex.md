@@ -1,9 +1,14 @@
-# Introduction
+# Documentation Index
 
+#### Table Of Contents
+
+1. [Installation & Set-up](./readMeSetUp.md)
+3. [User Metric Planning & Reources](./readMeUserMetrics.md)
+
+#### Introduction 
 An Adobe Photoshop Plugin for the Newlook retouch team. An all-encompassing automation solution that aims to centralise all actions, scripts and plugins.
 
 ![Plugin](/assets/documention/plugin.png)
-
 
 #### Plugin Features 
 - [x] Layer Structure Composite Function
@@ -34,49 +39,7 @@ An Adobe Photoshop Plugin for the Newlook retouch team. An all-encompassing auto
     * Ensure comments are clear and frequent  
 
 
-
-
-## Documentation
-
-For development:
-```
-npm run watch 
-```
-For Production:
-```
-npm run prod 
-```
-### Set-up
-
-Important to paste the following into the manifest.json otherwise read/writing to the local file system is not possible, place key/pair value below host key/[air value]:
-
-```
-  "requiredPermissions": {
-    "localFileSystem": "fullAccess"
-  },  
-
-```
-
-Developer mode needs to be enabled inside your Photoshop Application, Photoshop > Settings > Plugins:
-
-</br>
-
-![Developer Mode Enabled](/assets/documention/dev.png)
-
-### Packaging and installing a plugin 
-
-1. To save a plugin, open Adobes UXP Developer tools, locate the specific plugin in the menu and click on its ellipsis:
-
-</br>
-
-![Save/Package a plugin](/assets/documention/package.png)
-
-</br>
-
-2. A folder dialog box will appear, select a location for you packaged plugin to be saved
-3. The plugin will now be available for photoshop installation 
-
-## Tech Stack
+#### Tech Stack
 
 * Adobe Photoshop API
 * Adobe UXP API
@@ -93,7 +56,7 @@ Developer mode needs to be enabled inside your Photoshop Application, Photoshop 
 
 
 
-
+#### General Info
 
 * Read more about creating and debugging plugins using the UDT application [here](https://developer.adobe.com/photoshop/uxp/2022/guides/devtool/udt-walkthrough/). 
 * We build on this starter template and show you how to [edit a document](https://developer.adobe.com/photoshop/uxp/2022/guides/getting-started/editing-the-document/) and [write a file](https://developer.adobe.com/photoshop/uxp/2022/guides/getting-started/writing-a-file/) using UXP. 
