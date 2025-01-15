@@ -1,4 +1,4 @@
-[Home](./readMeIndex.md)
+[Home](./README.md)
 ## Documentation
 
 For development:
