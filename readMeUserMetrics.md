@@ -1,6 +1,10 @@
 [Home](./README.md)
 # User Metric Plugin
 
+## Aim
+
+The User Metric Plugin is designed to track and optimize productivity in Photoshop. It monitors selected folders, tracks file progress, and provides real-time updates on task completion. Planned features include folder filtering, per-file time tracking, and automated tally updates. By leveraging event listeners and file management tools, the plugin will enable efficient workflow monitoring, helping users meet KPIs and maintain organized outputs.
+
 ## Plugin Planning and Pseudocode
 
 ### Folder, file and target selection:
@@ -9,14 +13,14 @@
     * Check folder has been selected 
         * If not plugin options disabled
         * If yes plugin options enabled 
-            * Warn if folder is empty  
+            * Warn if folder is empty and disable run/watch button
 * Filter contents of folder option (Optional)
     * Define the file type (Optional)
     * Filter by keywords? (Optional)
 * Option to monitor how much time you spend per file (Optional)
     * Option to set a time limit per file (kpi target) (Optional)
 * Click Run watch 
-    * If folder missing images cancel Run and alert user to move files into the folder before running 
+    * If folder missing images disable Run and alert user to move files into the folder before running 
     * Clicking run creates a list of files to do/snap shot 
         * Creates an object:
             * Folder Path
@@ -50,17 +54,36 @@ require('photoshop').action.addNotificationListener([
 
 ### Image monitoring:
 
-* When a file is opened
-    * If open image doesn’t have an object check snap shot for file 
-        * If file does not exist in snap shot do not create object (file will not be monitored)
-        * If file is listed in snap shot create object and begin to time 
-            * Object could contain: 
-                * Done Status 
-                * Filename
-                * File Path 
-                * Time opened in minutes 
-    * If object exists of open image begin to time (while active document run timer)
-    * If no longer active document update object, how do I achieve this???????
+Image Monitoring:
+* When a file is active:
+    * Immediately apply the debounce event listener to delay the timing of file tracking.
+        * The debounce delay is set to 3 seconds (or your chosen threshold).
+        * If the active document remains the same after the debounce period:
+            * Begin timing for the file (the user is likely focusing on this document).
+        * If the active document changes during the debounce period:
+            * Reset the debounce timer and check again after the next focus change.
+            * Repeat the check until the user settles on a document for the full debounce period.
+    * If the active image doesn’t have an object:
+        * Check the snapshot for the file.
+            * If the file doesn’t exist in the snapshot:
+                * Run a snapshot update and check if the file exists.
+                    * If the file exists, move on.
+                    * If the file doesn’t exist, do not create an object (the file won’t be monitored, it may be unrelated).
+                    * Notify the user: "File not listed in monitored folder snapshot. Ignoring."
+    * If the file is listed in the snapshot but no object exists:
+        * Create the object with the following properties:
+            * Done Status
+            * isActive
+            * Filename
+            * File Path
+            * Time opened in minutes
+    * If the file is listed in the snapshot and an object exists:
+        * The debounce ensures that only after the user has settled on the document (i.e., after 3 seconds of continuous focus), will tracking start.
+        * Once the active document is consistent for the debounce period, begin timing and update the object’s properties.
+
+
+
+
 
 
 ### Updating tally:

@@ -1,5 +1,5 @@
 import {app, action, core, constants} from 'photoshop';
-import * as support from "../collector"
+import * as support from "../../collector"
 
 async function makeTopSelection() {
    await action.batchPlay(
