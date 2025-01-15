@@ -50,7 +50,7 @@ const UserMetrics = () => {
       <sp-action-button onClick={handleAddPath}>Add Path</sp-action-button>
 
       {/* Display folder data */}
-      {folderDataList.length > 0 ? (
+      {/* {folderDataList.length > 0 ? (
         folderDataList.map((folderData, index) => (
           <div key={index}>
             <p><strong>Hello: </strong>{folderData.hello}</p>
@@ -69,7 +69,7 @@ const UserMetrics = () => {
         ))
       ) : (
         <p>No data available</p>
-      )}
+      )} */}
 
      
     </>

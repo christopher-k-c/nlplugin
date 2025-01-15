@@ -1,5 +1,5 @@
 import {app} from 'photoshop';
-import * as support from "../collector"
+import * as support from "../../collector"
 import uxp from 'uxp';
 const fs = uxp.storage.localFileSystem;
 

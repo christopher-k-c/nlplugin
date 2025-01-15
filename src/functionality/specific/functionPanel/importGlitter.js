@@ -2,7 +2,7 @@
 import {app, core} from 'photoshop'
 import uxp from 'uxp';
 const fs = uxp.storage.localFileSystem;
-import * as support from '../collector'
+import * as support from '../../collector'
 
 async function importGlitter(){
     await core.executeAsModal(async (executionContext, descriptor) => {

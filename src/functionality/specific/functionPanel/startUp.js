@@ -1,4 +1,4 @@
-import * as support from "../collector"
+import * as support from "../../collector"
 import {core, app, action} from 'photoshop';
 
 
