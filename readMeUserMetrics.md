@@ -1,4 +1,4 @@
-[Home](./readMeIndex.md)
+[Home](./README.md)
 # User Metric Plugin
 
 ## Plugin Planning and Pseudocode
