@@ -19,7 +19,7 @@ The User Metric Plugin is designed to track and optimize productivity in Photosh
     * Filter by keywords? (Optional)
 * Option to monitor how much time you spend per file (Optional)
     * Option to set a time limit per file (kpi target) (Optional)
-* Click Run watch 
+* Click Run watch ()
     * If folder missing images disable Run and alert user to move files into the folder before running 
     * Clicking run creates a list of files to do/snap shot 
         * Creates an object:
