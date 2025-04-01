@@ -12,6 +12,7 @@ const arr = [
   { id: "8", name: "Batch-Start-Up", func: support.batchStartUp, type: "Batch"},
   { id: "9", name: "Layered-Upload", func: support.layeredUpload, type: "single"},
   { id: "10", name: "Upload", func: support.upload, type: "single"},
+  { id: "11", name: "Colour-Match", func: support.colourMatch, type: "single"},
 ];
 
 export default arr

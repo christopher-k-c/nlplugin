@@ -1,39 +1,68 @@
-import {app, core} from 'photoshop'
+import { app, core, action } from "photoshop";
+
+async function colourMatch() {
+  await core.executeAsModal(async () => {
+
+    const activeDoc = app.activeDocument;
+    const matchingDocs = app.documents.filter(doc => 
+      doc.name.slice(0, 9) === activeDoc.name.slice(0, 9)
+    );
+    console.log(matchingDocs)
+
+    const ccGroup = activeDoc.layers.find(layer => {
+      return layer.kind === "group" && layer.name === "CC";
+    });
+    if (!ccGroup) {
+      console.log("No CC group found in the actv doc.");
+      return;
+    }
 
 
+    for (const doc of matchingDocs) {
+      // Skip the remaining operations as this is the active document 
+      if (doc._id === activeDoc._id) continue;
 
+      // does it have a group
+      const hasCC = doc.layers.some(layer => 
+        layer.kind === "group" && layer.name === "CC"
+      );
+      if (hasCC) {
+        console.log(`${doc.name} already has a CC group.`);
+        continue;
+      }
 
+      // Store cc group from activedocument 
+      await action.batchPlay([
+        {
+          _obj: "select",
+          _target: [{ _ref: "layer", _id: ccGroup.id }],
+          makeVisible: false,
+          _options: { dialogOptions: "dontDisplay" },
+        },
+      ], {});
+      
+      // Duplicated cc group from active doc to the current for loop element 
+      await action.batchPlay([
+        {
+          _obj: "duplicate",
+          _target: [
+            {
+              _ref: "layer",
+              _enum: "ordinal",
+              _value: "targetEnum",
+            },
+          ],
+          to: {
+            _ref: "document",
+            _id: doc._id,
+          },
+          _options: { dialogOptions: "dontDisplay" },
+        },
+      ], {});
 
-async function colourMatch(){
-
-    await core.executeAsModal(async (executionContext, descriptor) => {
-
-        // Batch option
-
-            // Get array of all images in a directory 
-            // Sort all images into groups (within a array or object?) based on their filenames/sku codes
-            // Open one group of images at a time 
-            // Call single option function 
-               
-            
-        // Single option 
-            // Requires user to open a group of images that share the same filename/sku codes
-                // Check if all images contain cc group 
-                    // Save and close all images
-                // Check if all images do not contain a cc group 
-                    // Save and close all images
-                // Check if one or more, but not all images contain a cc group, do the following:
-                    // Find the first document that has a cc group
-                    // Copy the cc group from this document
-                    // Next iterate through the open images
-                        // If the active document contains a cc group 
-                            // Save and close
-                        // Where an image does not contain a cc group 
-                            // paste the cc group, save and close that active document
-
-        
-
-    },{commandName: "Colour Correction Transfer"})
+      console.log(`Duplicated CC group into ${doc.name}.`);
+    }
+  }, { commandName: "Colour Correction Transfer" });
 }
 
 export default colourMatch;
