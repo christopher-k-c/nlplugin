@@ -25,6 +25,7 @@ import batchUploadSpecific from "./specific/functionPanel/batchUploadSpecific"
 import layeredUpload from "./specific/functionPanel/layeredUpload"
 import multiPackTemplate from "./specific/functionPanel/mpTemplate"
 import userMetrics from "./specific/metricsPanel/metricsFolderObject"
+import colourMatch from "./specific/functionPanel/colourMatch"
 
 export {
     // Common Exports
@@ -52,5 +53,6 @@ export {
     batchUploadSpecific,
     layeredUpload,
     multiPackTemplate,
-    userMetrics
+    userMetrics,
+    colourMatch
 }
