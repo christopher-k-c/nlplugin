@@ -23,18 +23,20 @@ entrypoints.setup({
         ReactDOM.render(<App />, root);
       },
     },
-    secondPanel: {
-      show(body) {
-        while (body.firstChild) {
-          body.removeChild(body.firstChild);
-        }
+    // secondPanel: {
+    //   show(body) {
+    //     while (body.firstChild) {
+    //       body.removeChild(body.firstChild);
+    //     }
         
-        const root = document.createElement("div");
-        root.id = "root-metrics"; 
-        root.className = metricsPanel.rootContainer; 
-        body.appendChild(root);
-        ReactDOM.render(<UserMetrics />, root);
-      },
-    },
+    //     const root = document.createElement("div");
+    //     root.id = "root-metrics"; 
+    //     root.className = metricsPanel.rootContainer; 
+    //     body.appendChild(root);
+    //     ReactDOM.render(<UserMetrics />, root);
+    //   },
+    // },
+
+    // this section is the reason i have two manifest.json files, dev being the one which runs with this code
   },
 });

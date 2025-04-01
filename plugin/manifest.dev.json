@@ -1,0 +1,125 @@
+{
+	"id": "new-look-react-plugin",
+	"name": "New Look Retouch Plugin",
+	"version": "1.1.1",
+	"main": "main.js",
+	"manifestVersion": 5,
+  "host": [
+    {
+      "app": "PS",
+      "minVersion": "22.5.0",
+      "data": {
+        "apiVersion": 2
+      }
+    }
+  ],
+  "requiredPermissions": {
+	"localFileSystem": "fullAccess",
+    "clipboard": "readAndWrite",
+    "network": { "domains": "all" },
+    "allowCodeGenerationFromStrings": true,
+    "ipc": {
+        "enableHostCommunication": true,
+        "enablePluginCommunication": true
+    }
+  },
+	"entrypoints": [
+		{
+			"type": "panel",
+			"id": "firstPanel",
+			"label": {
+				"default": "New Look"
+			},
+			"minimumSize": {
+				"width": 230, 
+				"height": 200
+			},
+            "maximumSize": {
+				"width": 1000, 
+				"height": 600
+			},
+            "preferredDockedSize": {
+                "width": 340,
+                "height": 516
+            },
+            "preferredFloatingSize": {
+                "width": 340,
+                "height": 315
+            },
+			"icons": [{
+					"width": 23,
+					"height": 23,
+					"path": "icons/newlook_LOGO.png",
+					"scale": [1, 2],
+					"theme": ["dark", "darkest", "medium"],
+					"species": ["chrome"]
+				},
+				{
+					"width": 23,
+					"height": 23,
+					"path": "icons/newlook_LOGO.png",
+					"scale": [1, 2],
+					"theme": ["lightest", "light"],
+					"species": ["chrome"]
+				}
+			]
+		},
+		{
+			"type": "panel",
+			"id": "secondPanel",
+			"label": {
+				"default": "Panel Two"
+			},
+			"minimumSize": {
+				"width": 230, 
+				"height": 200
+			},
+            "maximumSize": {
+				"width": 1000, 
+				"height": 600
+			},
+            "preferredDockedSize": {
+                "width": 340,
+                "height": 516
+            },
+            "preferredFloatingSize": {
+                "width": 340,
+                "height": 315
+            },
+			"icons": [{
+					"width": 23,
+					"height": 23,
+					"path": "icons/newlook_LOGO.png",
+					"scale": [1, 2],
+					"theme": ["dark", "darkest", "medium"],
+					"species": ["chrome"]
+				},
+				{
+					"width": 23,
+					"height": 23,
+					"path": "icons/newlook_LOGO.png",
+					"scale": [1, 2],
+					"theme": ["lightest", "light"],
+					"species": ["chrome"]
+				}
+			]
+		}
+	],
+	"icons": [{
+			"width": 48,
+			"height": 48,
+			"path": "icons/newlook_LOGO.png",
+			"scale": [1, 2],
+			"theme": ["dark", "darkest", "medium"],
+			"species": ["pluginList"]
+		},
+		{
+			"width": 48,
+			"height": 48,
+			"path": "icons/newlook_LOGO.png",
+			"scale": [1, 2],
+			"theme": ["lightest", "light"],
+			"species": ["pluginList"]
+		}
+	]
+}
