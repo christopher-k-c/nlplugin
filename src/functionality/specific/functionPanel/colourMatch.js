@@ -13,24 +13,21 @@ async function colourMatch() {
       return layer.kind === "group" && layer.name === "CC";
     });
     if (!ccGroup) {
-      console.log("No CC group found in the actv doc.");
+        core.showAlert("Missing CC Group");
       return;
     }
 
 
     for (const doc of matchingDocs) {
-      // Skip the remaining operations as this is the active document 
-      if (doc._id === activeDoc._id) continue;
+      
+      if (doc._id === activeDoc._id) continue; // Skip the remaining operations as this is the active document 
 
       // does it have a group
       const hasCC = doc.layers.some(layer => 
         layer.kind === "group" && layer.name === "CC"
       );
-      if (hasCC) {
-        console.log(`${doc.name} already has a CC group.`);
-        continue;
-      }
-
+      if (hasCC) continue // Skip the remaining operations as this document already has a CC group
+      
       // Store cc group from activedocument 
       await action.batchPlay([
         {
@@ -60,7 +57,7 @@ async function colourMatch() {
         },
       ], {});
 
-      console.log(`Duplicated CC group into ${doc.name}.`);
+      
     }
   }, { commandName: "Colour Correction Transfer" });
 }
