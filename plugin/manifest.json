@@ -63,6 +63,46 @@
 					"species": ["chrome"]
 				}
 			]
+		},
+		{
+			"type": "panel",
+			"id": "secondPanel",
+			"label": {
+				"default": "Panel Two"
+			},
+			"minimumSize": {
+				"width": 230, 
+				"height": 200
+			},
+            "maximumSize": {
+				"width": 1000, 
+				"height": 600
+			},
+            "preferredDockedSize": {
+                "width": 340,
+                "height": 516
+            },
+            "preferredFloatingSize": {
+                "width": 340,
+                "height": 315
+            },
+			"icons": [{
+					"width": 23,
+					"height": 23,
+					"path": "icons/newlook_LOGO.png",
+					"scale": [1, 2],
+					"theme": ["dark", "darkest", "medium"],
+					"species": ["chrome"]
+				},
+				{
+					"width": 23,
+					"height": 23,
+					"path": "icons/newlook_LOGO.png",
+					"scale": [1, 2],
+					"theme": ["lightest", "light"],
+					"species": ["chrome"]
+				}
+			]
 		}
 	],
 	"icons": [{
