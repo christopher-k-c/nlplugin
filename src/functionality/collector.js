@@ -26,6 +26,7 @@ import layeredUpload from "./specific/functionPanel/layeredUpload"
 import multiPackTemplate from "./specific/functionPanel/mpTemplate"
 import userMetrics from "./specific/metricsPanel/metricsFolderObject"
 import colourMatch from "./specific/functionPanel/colourMatch"
+import WorkSubmissions from "./specific/metricsPanel/workSubmissionForm"
 
 export {
     // Common Exports
@@ -54,5 +55,6 @@ export {
     layeredUpload,
     multiPackTemplate,
     userMetrics,
-    colourMatch
+    colourMatch,
+    WorkSubmissions
 }

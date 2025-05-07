@@ -57,11 +57,11 @@ const UserMetrics = () => {
             <p><strong>Folder: </strong>{folderData.folderName}</p>
             <p><strong>Path: </strong>{folderData.path}</p>
             <p><strong>Unedited Images:</strong></p>
-            <ul>
-              {folderData.uneditedImages.map((image, i) => (
-                <li key={i}>{image}</li>
-              ))}
-            </ul>
+            // <ul>
+            //   {folderData.uneditedImages.map((image, i) => (
+            //     <li key={i}>{image}</li>
+            //   ))}
+            // </ul>
             
             <sp-action-button onClick={() => handleRemove(folderData.folderName)}>Remove</sp-action-button>
             <sp-action-button>Update</sp-action-button>

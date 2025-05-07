@@ -1,6 +1,7 @@
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
 const WebpackObfuscator = require('webpack-obfuscator');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = merge(common, {
   mode: 'production',
@@ -45,4 +46,11 @@ module.exports = merge(common, {
   },
 
   // plugins: []
+  plugins: [
+    new Dotenv({
+      path: './.env', // Path to your .env file
+      systemvars: true, // Load system environment variables as well
+    }),
+    // Other plugins like WebpackObfuscator
+  ],
 });
